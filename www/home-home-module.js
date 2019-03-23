@@ -993,6 +993,373 @@ var version="1.0.1",version$1={"tfjs-core":_tensorflow_tfjs_core__WEBPACK_IMPORT
 
 /***/ }),
 
+/***/ "./node_modules/speak-tts/lib/speak-tts.js":
+/*!*************************************************!*\
+  !*** ./node_modules/speak-tts/lib/speak-tts.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _utils = __webpack_require__(/*! ./utils */ "./node_modules/speak-tts/lib/utils.js");
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var SpeakTTS =
+/*#__PURE__*/
+function () {
+  function SpeakTTS() {
+    _classCallCheck(this, SpeakTTS);
+
+    this.browserSupport = 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
+    this.synthesisVoice = null;
+  }
+
+  _createClass(SpeakTTS, [{
+    key: "init",
+    value: function init() {
+      var _this = this;
+
+      var conf = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      return new Promise(function (resolve, reject) {
+        if (!_this.browserSupport) {
+          reject('Your browser does not support Speech Synthesis');
+        }
+
+        var listeners = (0, _utils.isNil)(conf.listeners) ? {} : conf.listeners;
+        var splitSentences = (0, _utils.isNil)(conf.splitSentences) ? true : conf.splitSentences;
+        var lang = (0, _utils.isNil)(conf.lang) ? undefined : conf.lang;
+        var volume = (0, _utils.isNil)(conf.volume) ? 1 : conf.volume;
+        var rate = (0, _utils.isNil)(conf.rate) ? 1 : conf.rate;
+        var pitch = (0, _utils.isNil)(conf.pitch) ? 1 : conf.pitch;
+        var voice = (0, _utils.isNil)(conf.voice) ? undefined : conf.voice; // Attach event listeners
+
+        Object.keys(listeners).forEach(function (listener) {
+          var fn = listeners[listener];
+
+          var newListener = function newListener(data) {
+            fn && fn(data);
+          };
+
+          if (listener !== 'onvoiceschanged') {
+            speechSynthesis[listener] = newListener;
+          }
+        });
+
+        _this._loadVoices().then(function (voices) {
+          // Handle callback onvoiceschanged by hand
+          listeners['onvoiceschanged'] && listeners['onvoiceschanged'](voices); // Initialize values if necessary
+
+          !(0, _utils.isNil)(lang) && _this.setLanguage(lang);
+          !(0, _utils.isNil)(voice) && _this.setVoice(voice);
+          !(0, _utils.isNil)(volume) && _this.setVolume(volume);
+          !(0, _utils.isNil)(rate) && _this.setRate(rate);
+          !(0, _utils.isNil)(pitch) && _this.setPitch(pitch);
+          !(0, _utils.isNil)(splitSentences) && _this.setSplitSentences(splitSentences);
+          resolve({
+            voices: voices,
+            lang: _this.lang,
+            voice: _this.voice,
+            volume: _this.volume,
+            rate: _this.rate,
+            pitch: _this.pitch,
+            splitSentences: _this.splitSentences,
+            browserSupport: _this.browserSupport
+          });
+        }).catch(function (e) {
+          reject(e);
+        });
+      });
+    }
+  }, {
+    key: "_fetchVoices",
+    value: function _fetchVoices() {
+      return new Promise(function (resolve, reject) {
+        setTimeout(function () {
+          var voices = speechSynthesis.getVoices();
+
+          if ((0, _utils.size)(voices) > 0) {
+            return resolve(voices);
+          } else {
+            return reject("Could not fetch voices");
+          }
+        }, 100);
+      });
+    }
+  }, {
+    key: "_loadVoices",
+    value: function _loadVoices() {
+      var _this2 = this;
+
+      var remainingAttempts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 10;
+      return this._fetchVoices().catch(function (error) {
+        if (remainingAttempts === 0) throw error;
+        return _this2._loadVoices(remainingAttempts - 1);
+      });
+    }
+  }, {
+    key: "hasBrowserSupport",
+    value: function hasBrowserSupport() {
+      return this.browserSupport;
+    }
+  }, {
+    key: "setVoice",
+    value: function setVoice(voice) {
+      var synthesisVoice;
+      var voices = speechSynthesis.getVoices(); // set voice by name
+
+      if ((0, _utils.isString)(voice)) {
+        synthesisVoice = voices.find(function (v) {
+          return v.name === voice;
+        });
+      } // Set the voice in conf if found
+
+
+      if ((0, _utils.isObject)(voice)) {
+        synthesisVoice = voice;
+      }
+
+      if (synthesisVoice) {
+        this.synthesisVoice = synthesisVoice;
+      } else {
+        throw 'Error setting voice. The voice you passed is not valid or the voices have not been loaded yet.';
+      }
+    }
+  }, {
+    key: "setLanguage",
+    value: function setLanguage(lang) {
+      lang = lang.replace('_', '-'); // some Android versions seem to ignore BCP 47 and use an underscore character in language tag
+
+      if ((0, _utils.validateLocale)(lang)) {
+        this.lang = lang;
+      } else {
+        throw 'Error setting language. Please verify your locale is BCP47 format (http://schneegans.de/lv/?tags=es-FR&format=text)';
+      }
+    }
+  }, {
+    key: "setVolume",
+    value: function setVolume(volume) {
+      volume = parseFloat(volume);
+
+      if (!(0, _utils.isNan)(volume) && volume >= 0 && volume <= 1) {
+        this.volume = volume;
+      } else {
+        throw 'Error setting volume. Please verify your volume value is a number between 0 and 1.';
+      }
+    }
+  }, {
+    key: "setRate",
+    value: function setRate(rate) {
+      rate = parseFloat(rate);
+
+      if (!(0, _utils.isNan)(rate) && rate >= 0 && rate <= 10) {
+        this.rate = rate;
+      } else {
+        throw 'Error setting rate. Please verify your volume value is a number between 0 and 10.';
+      }
+    }
+  }, {
+    key: "setPitch",
+    value: function setPitch(pitch) {
+      pitch = parseFloat(pitch);
+
+      if (!(0, _utils.isNan)(pitch) && pitch >= 0 && pitch <= 2) {
+        this.pitch = pitch;
+      } else {
+        throw 'Error setting pitch. Please verify your pitch value is a number between 0 and 2.';
+      }
+    }
+  }, {
+    key: "setSplitSentences",
+    value: function setSplitSentences(splitSentences) {
+      this.splitSentences = splitSentences;
+    }
+  }, {
+    key: "speak",
+    value: function speak(data) {
+      var _this3 = this;
+
+      return new Promise(function (resolve, reject) {
+        var text = data.text,
+            _data$listeners = data.listeners,
+            listeners = _data$listeners === void 0 ? {} : _data$listeners,
+            _data$queue = data.queue,
+            queue = _data$queue === void 0 ? true : _data$queue;
+        var msg = (0, _utils.trim)(text);
+        if ((0, _utils.isNil)(msg)) resolve(); // Stop current speech
+
+        !queue && _this3.cancel(); // Split into sentences (for better result and bug with some versions of chrome)
+
+        var utterances = [];
+        var sentences = _this3.splitSentences ? (0, _utils.splitSentences)(msg) : [msg];
+        sentences.forEach(function (sentence, index) {
+          var isLast = index === (0, _utils.size)(sentences) - 1;
+          var utterance = new SpeechSynthesisUtterance();
+          if (_this3.synthesisVoice) utterance.voice = _this3.synthesisVoice;
+          if (_this3.lang) utterance.lang = _this3.lang;
+          if (_this3.volume) utterance.volume = _this3.volume; // 0 to 1
+
+          if (_this3.rate) utterance.rate = _this3.rate; // 0.1 to 10
+
+          if (_this3.pitch) utterance.pitch = _this3.pitch; //0 to 2
+
+          utterance.text = sentence; // Attach event listeners
+
+          Object.keys(listeners).forEach(function (listener) {
+            var fn = listeners[listener];
+
+            var newListener = function newListener(data) {
+              fn && fn(data);
+
+              if (listener === 'onerror') {
+                reject({
+                  utterances: utterances,
+                  lastUtterance: utterance,
+                  error: data
+                });
+              }
+
+              if (listener === 'onend') {
+                if (isLast) resolve({
+                  utterances: utterances,
+                  lastUtterance: utterance
+                });
+              }
+            };
+
+            utterance[listener] = newListener;
+          });
+          utterances.push(utterance);
+          speechSynthesis.speak(utterance);
+        });
+      });
+    }
+  }, {
+    key: "pending",
+    value: function pending() {
+      return speechSynthesis.pending;
+    }
+  }, {
+    key: "paused",
+    value: function paused() {
+      return speechSynthesis.paused;
+    }
+  }, {
+    key: "speaking",
+    value: function speaking() {
+      return speechSynthesis.speaking;
+    }
+  }, {
+    key: "pause",
+    value: function pause() {
+      speechSynthesis.pause();
+    }
+  }, {
+    key: "resume",
+    value: function resume() {
+      speechSynthesis.resume();
+    }
+  }, {
+    key: "cancel",
+    value: function cancel() {
+      speechSynthesis.cancel();
+    }
+  }]);
+
+  return SpeakTTS;
+}();
+
+var _default = SpeakTTS;
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/speak-tts/lib/utils.js":
+/*!*********************************************!*\
+  !*** ./node_modules/speak-tts/lib/utils.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.trim = exports.isObject = exports.isNil = exports.isNan = exports.size = exports.isString = exports.validateLocale = exports.splitSentences = void 0;
+
+var splitSentences = function splitSentences() {
+  var text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+  return text.replace(/\.+/g, '.|').replace(/\?/g, '?|').replace(/\!/g, '!|').split("|").map(function (sentence) {
+    return trim(sentence);
+  }).filter(Boolean);
+};
+
+exports.splitSentences = splitSentences;
+var bcp47LocalePattern = /^(?:(en-GB-oed|i-ami|i-bnn|i-default|i-enochian|i-hak|i-klingon|i-lux|i-mingo|i-navajo|i-pwn|i-tao|i-tay|i-tsu|sgn-BE-FR|sgn-BE-NL|sgn-CH-DE)|(art-lojban|cel-gaulish|no-bok|no-nyn|zh-guoyu|zh-hakka|zh-min|zh-min-nan|zh-xiang))$|^((?:[a-z]{2,3}(?:(?:-[a-z]{3}){1,3})?)|[a-z]{4}|[a-z]{5,8})(?:-([a-z]{4}))?(?:-([a-z]{2}|\d{3}))?((?:-(?:[\da-z]{5,8}|\d[\da-z]{3}))*)?((?:-[\da-wy-z](?:-[\da-z]{2,8})+)*)?(-x(?:-[\da-z]{1,8})+)?$|^(x(?:-[\da-z]{1,8})+)$/i; // eslint-disable-line max-len
+
+/**
+ * Validate a locale string to test if it is bcp47 compliant
+ * @param {String} locale The tag locale to parse
+ * @return {Boolean} True if tag is bcp47 compliant false otherwise
+ */
+
+var validateLocale = function validateLocale(locale) {
+  return typeof locale !== 'string' ? false : bcp47LocalePattern.test(locale);
+};
+
+exports.validateLocale = validateLocale;
+
+var isString = function isString(value) {
+  return typeof value === 'string' || value instanceof String;
+};
+
+exports.isString = isString;
+
+var size = function size(value) {
+  return value && Array.isArray(value) && value.length ? value.length : 0;
+};
+
+exports.size = size;
+
+var isNan = function isNan(value) {
+  return typeof value === "number" && isNaN(value);
+};
+
+exports.isNan = isNan;
+
+var isNil = function isNil(value) {
+  return value === null || value === undefined;
+};
+
+exports.isNil = isNil;
+
+var isObject = function isObject(value) {
+  return Object.prototype.toString.call(value) === '[object Object]';
+};
+
+exports.isObject = isObject;
+
+var trim = function trim(value) {
+  return isString(value) ? value.trim() : '';
+};
+
+exports.trim = trim;
+
+/***/ }),
+
 /***/ "./src/app/home/home.module.ts":
 /*!*************************************!*\
   !*** ./src/app/home/home.module.ts ***!
@@ -1050,7 +1417,7 @@ var HomePageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-title>\n      Ionic Blank\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n  <!-- The world is your oyster.\n  <p>If you get lost, the <a target=\"_blank\" rel=\"noopener\" href=\"https://ionicframework.com/docs/\">docs</a> will be your guide.</p> -->\n  <!-- TensorFlow says {{ prediction }} -->\n  <br>\n  <!-- <input type=\"number\" (change)=\"predict($event.target.value)\"> -->\n  <!-- <video id = \"video\">\n\n  </video> -->\n\n  <!-- <div id='main' style='display:none'>\n        <video id=\"video\" playsinline style=\" -moz-transform: scaleX(-1);\n        -o-transform: scaleX(-1);\n        -webkit-transform: scaleX(-1);\n        transform: scaleX(-1);\n        display: none;\n        \">\n        </video>\n        <canvas id=\"output\" ></canvas>\n    </div> -->\n    <ion-content overflow-scroll=\"true\">\n      <video id=\"video\" ontrols=\"controls\" preload=\"metadata\" autoplay=\"autoplay\" webkit-playsinline=\"webkit-playsinline\" class=\"videoPlayer\">\n       <source  type=\"video/mp4\" />\n      </video>\n    </ion-content>\n\n</ion-content>\n"
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-title>\n      Ionic Blank\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n  <!-- The world is your oyster.\n  <p>If you get lost, the <a target=\"_blank\" rel=\"noopener\" href=\"https://ionicframework.com/docs/\">docs</a> will be your guide.</p> -->\n  <!-- TensorFlow says {{ prediction }} -->\n  <br>\n  <!-- <input type=\"number\" (change)=\"predict($event.target.value)\"> -->\n  <!-- <video id = \"video\">\n\n  </video> -->\n\n  <!-- <div id='main' style='display:none'>\n        <video id=\"video\" playsinline style=\" -moz-transform: scaleX(-1);\n        -o-transform: scaleX(-1);\n        -webkit-transform: scaleX(-1);\n        transform: scaleX(-1);\n        display: none;\n        \">\n        </video>\n        <canvas id=\"output\" ></canvas>\n    </div> -->\n    <ion-content overflow-scroll=\"true\">\n      <video id=\"video\" ontrols=\"controls\" preload=\"metadata\" autoplay=\"autoplay\" webkit-playsinline=\"webkit-playsinline\" class=\"videoPlayer\">\n       <source  type=\"video/mp4\" />\n      </video>\n      <h2>{{rep}}</h2>\n      <h1 style=\"color:red\"*ngIf=\"elbow\">CHECK ELBOW ANGLE.</h1>\n      <ion-button href=\"/feedback\">Feedback</ion-button>\n      <ion-button (click)=\"go()\">Go</ion-button>\n    </ion-content>\n\n</ion-content>\n"
 
 /***/ }),
 
@@ -1061,7 +1428,7 @@ module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-title>\n      Ionic Bl
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2hvbWUvaG9tZS5wYWdlLnNjc3MifQ== */"
+module.exports = "button {\n  font-size: 36px;\n  padding: 10px;\n  height: 50px;\n  width: auto;\n  margin: 10px;\n  position: absolute; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy92aXNobnVjaG9wcmEvUHJvamVjdC9meXAvc3JjL2FwcC9ob21lL2hvbWUucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBRUMsZUFBZTtFQUNmLGFBQWE7RUFDYixZQUFZO0VBQ1osV0FBVztFQUNYLFlBQVk7RUFDWixrQkFBa0IsRUFBQSIsImZpbGUiOiJzcmMvYXBwL2hvbWUvaG9tZS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJidXR0b25cbntcblx0Zm9udC1zaXplOiAzNnB4O1xuXHRwYWRkaW5nOiAxMHB4O1xuXHRoZWlnaHQ6IDUwcHg7XG5cdHdpZHRoOiBhdXRvO1xuXHRtYXJnaW46IDEwcHg7XG5cdHBvc2l0aW9uOiBhYnNvbHV0ZTtcbn0iXX0= */"
 
 /***/ }),
 
@@ -1077,18 +1444,38 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HomePage", function() { return HomePage; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _tensorflow_tfjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tensorflow/tfjs */ "./node_modules/@tensorflow/tfjs/dist/tf.esm.js");
-/* harmony import */ var _tensorflow_models_posenet__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @tensorflow-models/posenet */ "./node_modules/@tensorflow-models/posenet/dist/posenet.esm.js");
+/* harmony import */ var _tensorflow_models_posenet__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tensorflow-models/posenet */ "./node_modules/@tensorflow-models/posenet/dist/posenet.esm.js");
+/* harmony import */ var speak_tts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! speak-tts */ "./node_modules/speak-tts/lib/speak-tts.js");
+/* harmony import */ var speak_tts__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(speak_tts__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 
 
 
+// import { MyClass } from '../app.myclass';
 
-// import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview/ngx';
+
 var HomePage = /** @class */ (function () {
-    function HomePage() {
+    function HomePage(router) {
+        this.router = router;
+        this.angles = [];
+        this.flag1 = true;
+        this.flag2 = false;
+        this.flag3 = false;
+        this.rep = 0;
+        this.elbow = false;
+        this.count = 0;
+        this.speech = new speak_tts__WEBPACK_IMPORTED_MODULE_3___default.a();
+        this.speech.init().then(function (data) {
+            // The "data" object contains the list of available voices and the voice synthesis params
+            console.log("Speech is ready, voices are available", data);
+        }).catch(function (e) {
+            console.error("An error occured while initializing : ", e);
+        });
     }
+    HomePage.prototype.endWorkout = function () {
+        // this.navCtrl.push(EndPage);
+    };
     HomePage.prototype.ngOnInit = function () {
-        // this.train();
         this.loadVideo();
     };
     HomePage.prototype.isAndroid = function () {
@@ -1100,52 +1487,28 @@ var HomePage = /** @class */ (function () {
     HomePage.prototype.isMobile = function () {
         return this.isAndroid() || this.isiOS();
     };
-    HomePage.prototype.train = function () {
-        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-            var xs, ys;
-            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        // Define a model for linear regression.
-                        this.linearModel = _tensorflow_tfjs__WEBPACK_IMPORTED_MODULE_2__["sequential"]();
-                        this.linearModel.add(_tensorflow_tfjs__WEBPACK_IMPORTED_MODULE_2__["layers"].dense({ units: 1, inputShape: [1] }));
-                        // Prepare the model for training: Specify the loss and the optimizer.
-                        this.linearModel.compile({ loss: 'meanSquaredError', optimizer: 'sgd' });
-                        xs = _tensorflow_tfjs__WEBPACK_IMPORTED_MODULE_2__["tensor1d"]([3.2, 4.4, 5.5]);
-                        ys = _tensorflow_tfjs__WEBPACK_IMPORTED_MODULE_2__["tensor1d"]([1.6, 2.7, 3.5]);
-                        // Train
-                        return [4 /*yield*/, this.linearModel.fit(xs, ys)];
-                    case 1:
-                        // Train
-                        _a.sent();
-                        console.log('model trained!');
-                        return [2 /*return*/];
-                }
-            });
-        });
-    };
     HomePage.prototype.setupCamera = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-            var video, mobile, stream;
+            var videoWidth, videoHeight, video, mobile, stream;
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
                 switch (_a.label) {
                     case 0:
+                        videoWidth = 600;
+                        videoHeight = 500;
                         navigator.getUserMedia = navigator.getUserMedia;
                         if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
                             throw new Error('Browser API navigator.mediaDevices.getUserMedia not available');
                         }
                         video = document.getElementById('video');
-                        video.width = 600;
-                        video.height = 500;
+                        video.width = videoWidth;
+                        video.height = videoHeight;
                         mobile = this.isMobile();
                         return [4 /*yield*/, navigator.mediaDevices.getUserMedia({
                                 'audio': false,
                                 'video': {
                                     facingMode: 'user',
-                                    // width: mobile ? undefined : videoWidth,
-                                    width: undefined,
-                                    // height: mobile ? undefined : videoHeight,
-                                    height: undefined,
+                                    width: mobile ? undefined : videoWidth,
+                                    height: mobile ? undefined : videoHeight,
                                 },
                             })];
                     case 1:
@@ -1170,19 +1533,21 @@ var HomePage = /** @class */ (function () {
                             case 0: return [4 /*yield*/, net.estimateSinglePose(video, 0.5, true, 16)];
                             case 1:
                                 pose = _a.sent();
-                                console.log(pose);
+                                // console.log(pose);
+                                me.main_function(pose.keypoints);
                                 requestAnimationFrame(poseDetectionFrame);
                                 return [2 /*return*/];
                         }
                     });
                 });
             }
-            var net;
+            var me, net;
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
                 switch (_a.label) {
                     case 0:
+                        me = this;
                         console.log("entered poses");
-                        return [4 /*yield*/, _tensorflow_models_posenet__WEBPACK_IMPORTED_MODULE_3__["load"](0.75)];
+                        return [4 /*yield*/, _tensorflow_models_posenet__WEBPACK_IMPORTED_MODULE_2__["load"](0.75)];
                     case 1:
                         net = _a.sent();
                         poseDetectionFrame();
@@ -1210,12 +1575,123 @@ var HomePage = /** @class */ (function () {
             });
         });
     };
+    HomePage.prototype.main_function = function (keypoints) {
+        var bicep_angle = this.getAngle(1, keypoints);
+        var elbow_angle = this.getAngle(2, keypoints);
+        // console.log("bicep_angle", bicep_angle)
+        // console.log("elbow_angle", elbow_angle)
+        if (bicep_angle !== -1) {
+            if (this.flag1 && !this.flag2 && !this.flag3 && bicep_angle < 90) {
+                this.flag1 = false;
+                this.flag2 = true;
+                console.log('state 2');
+            }
+            else if (this.flag2 && !this.flag1 && !this.flag3 && bicep_angle < 60) {
+                this.flag2 = false;
+                this.flag3 = true;
+                console.log('state 3', bicep_angle);
+            }
+            else if (this.flag3 && !this.flag1 && !this.flag2 && bicep_angle > 90 && bicep_angle < 120) {
+                this.flag3 = false;
+                this.flag2 = true;
+                console.log('state 2');
+            }
+            else if (this.flag2 && !this.flag1 && !this.flag3 && bicep_angle > 120) {
+                this.rep += 1;
+                console.log("REP", this.rep);
+                this.flag2 = false;
+                this.flag1 = true;
+                console.log('state 1');
+            }
+        }
+        if (elbow_angle !== -1) {
+            if (elbow_angle > 15) {
+                this.elbow = true;
+                this.count += 1;
+                if (this.count > 20) {
+                    this.speech.speak({
+                        text: 'Elbow error ?',
+                    }).then(function () {
+                        console.log("Success !");
+                    }).catch(function (e) {
+                        console.error("An error occurred :", e);
+                    });
+                    this.count = 0;
+                }
+            }
+            else {
+                this.elbow = false;
+                this.count = 0;
+            }
+        }
+    };
+    HomePage.prototype.angle = function (A, B, C) {
+        var AB = Math.sqrt(Math.pow(B.x - A.x, 2) + Math.pow(B.y - A.y, 2));
+        var BC = Math.sqrt(Math.pow(B.x - C.x, 2) + Math.pow(B.y - C.y, 2));
+        var AC = Math.sqrt(Math.pow(C.x - A.x, 2) + Math.pow(C.y - A.y, 2));
+        var angle = Math.acos((BC * BC + AB * AB - (AC * AC)) / (2 * BC * AB));
+        // console.log(angle*180/Math.PI);
+        return angle * 180 / Math.PI;
+    };
+    HomePage.prototype.getAngle = function (temp, keypoints) {
+        var lw = undefined;
+        var ls = undefined;
+        var le = undefined;
+        var lh = undefined;
+        var f1 = 0;
+        var f2 = 0;
+        var f3 = 0;
+        var f4 = 0;
+        for (var j = 0; j < keypoints.length; j++) {
+            if (keypoints[j].part === 'leftWrist' && keypoints[j].score > 0.3) {
+                f1 = 1;
+                lw = keypoints[j];
+            }
+            else if (keypoints[j].part === 'leftShoulder' && keypoints[j].score > 0.3) {
+                f2 = 1;
+                ls = keypoints[j];
+            }
+            else if (keypoints[j].part === 'leftElbow' && keypoints[j].score > 0.3) {
+                f3 = 1;
+                le = keypoints[j];
+            }
+            else if (keypoints[j].part === 'leftHip' && keypoints[j].score > 0.3) {
+                f4 = 1;
+                lh = keypoints[j];
+            }
+        }
+        if (f1 && f2 && f3 && f4) {
+            switch (temp) {
+                case 1:
+                    return this.angle(lw.position, le.position, ls.position);
+                    break;
+                case 2:
+                    return this.angle(le.position, ls.position, { x: ls.position.x, y: (ls.position.y + 100) });
+                    break;
+                default:
+                    return this.angle(lw.position, le.position, ls.position);
+                    ;
+            }
+        }
+        else
+            return -1;
+    };
+    HomePage.prototype.ionViewWillLeave = function () {
+        console.log("leaving this page");
+    };
+    HomePage.prototype.ionViewWillEnter = function () {
+        console.log("entering this page");
+    };
+    HomePage.prototype.go = function () {
+        this.router.navigate(['feedback']);
+    };
     HomePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-home',
             template: __webpack_require__(/*! ./home.page.html */ "./src/app/home/home.page.html"),
             styles: [__webpack_require__(/*! ./home.page.scss */ "./src/app/home/home.page.scss")]
-        })
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])
     ], HomePage);
     return HomePage;
 }());

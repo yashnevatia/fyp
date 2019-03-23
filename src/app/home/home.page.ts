@@ -16,23 +16,33 @@ export class HomePage implements OnInit{
     video: any;
     exercise: any;
     angles: any;
-    flag1 : boolean; // start position : bottom
-    flag2: boolean; // middle position : middle
-    flag3: boolean; // close position : top
     rep: number;
     elbow: boolean; // elbow error flag.
     speech: any;
     count: number;
+    confidenceThreshold: number;
+    state: number;
+    ORIENTATION_COUNT: number;
+    CORRECT_ORIENTATION: number;
+    POSITION_COUNT: number;
+    CORRECT_POSITION: number;
+    lastCheck: boolean;
+    STARTED: boolean;
+    ratioThreshold: number;
 
     constructor(private router: Router) {
         this.angles = [];
-        this.flag1 = true;
-        this.flag2 = false;
-        this.flag3 = false;
         this.rep = 0;
         this.elbow = false;
         this.count = 0;
         this.speech = new Speech();
+        this.confidenceThreshold = 0.5;
+        this.ratioThreshold = 4.6;
+        this.ORIENTATION_COUNT=0;
+        this.CORRECT_ORIENTATION=0;
+        this.POSITION_COUNT=0;
+        this.state=1;
+        this.STARTED=false;
         this.speech.init().then((data) => {
             // The "data" object contains the list of available voices and the voice synthesis params
             console.log("Speech is ready, voices are available", data)
@@ -100,8 +110,22 @@ export class HomePage implements OnInit{
         async function poseDetectionFrame() {
             const pose = await net.estimateSinglePose(
                   video, 0.5, true, 16);
-            // console.log(pose);
-            me.main_function(pose.keypoints);
+
+            //ADD CHECK FOR ORIENTATION + POSITION HERE
+            var check = me.checkPositionOrientation(pose.keypoints);
+            
+            if (check==true)
+            {   
+                if (me.CORRECT_ORIENTATION>20 || (!me.STARTED && me.CORRECT_ORIENTATION>20))
+                {
+                    me.main_function(pose.keypoints);
+                }
+                else
+                {
+                    me.CORRECT_ORIENTATION++;
+                }
+            }
+
             requestAnimationFrame(poseDetectionFrame);
         }
         poseDetectionFrame()
@@ -117,34 +141,141 @@ export class HomePage implements OnInit{
       // return video;
     }
 
+    checkPositionOrientation(keypoints){
+        if (!this.checkPosition(["Wrist","Elbow","Shoulder"],keypoints)) 
+        {
+            this.POSITION_COUNT++;
+            if (this.POSITION_COUNT>10)
+            {
+                this.CORRECT_POSITION=0;
+                console.log("WRONG POSITION");
+                this.POSITION_COUNT=0;
+                // return false;
+            }
+            return false;
+        }
+        else 
+        {   
+            this.CORRECT_POSITION++;
+            this.POSITION_COUNT=0;
+            if (this.checkOrientationSideBicep(keypoints))
+            {
+                 this.ORIENTATION_COUNT=0;
+                 return true;
+            }
+            else
+            {
+                this.ORIENTATION_COUNT++;
+                this.CORRECT_ORIENTATION--;
+                if(this.ORIENTATION_COUNT>20)
+                {   
+                    console.log("WRONG");
+                    this.state = 1;
+                    this.CORRECT_ORIENTATION = 0;
+                    this.ORIENTATION_COUNT=0;
+                    return false;
+                }
+                return false;
+            }
+        }
+    }
+
+    checkConfidence(sidePoints)
+    {
+      for (var i = sidePoints.length - 1; i >= 0; i--) 
+      {
+        if (sidePoints[i]<this.confidenceThreshold) return false;
+      }
+      return true;
+    }
+
+    checkPosition(points,keypoints){
+
+      var sides = ["left","right"];
+      var sidePoints = {
+        "left":[],
+        "right":[]
+      };
+
+      for (var i = sides.length - 1; i >= 0; i--) {
+        for (var j = points.length - 1; j >= 0; j--) {
+          let confidence = keypoints.find( obj => {
+            return obj.part == sides[i]+points[j];
+          }).score;
+          sidePoints[sides[i]].push(confidence);
+        }
+      }
+
+      return this.checkConfidence(sidePoints["left"]) || this.checkConfidence(sidePoints["right"]);
+    }
+
+    getSide(keypoints){
+      return keypoints.find( obj => {
+            return obj.part == "rightShoulder";
+          }).score > keypoints.find( obj => {
+            return obj.part == "leftShoulder";
+          }).score;
+    }
+
+    getDistance(A,B){
+      var a = A.x-B.x;
+      var b = A.y-B.y;
+      return Math.sqrt( a*a + b*b );
+    }
+
+
+    checkOrientationSideBicep(keypoints){
+      // console.log("co")
+
+      // get right and left shoulder, elbow and wrist
+      
+      var side = this.getSide(keypoints) ? "right" : "left";
+      // console.log(side);
+      var opside = side == "right" ? "left" : "right";
+
+      var wrist = keypoints.find( obj => {
+              return obj.part === side+"Wrist";
+          });
+      var elbow = keypoints.find( obj => {
+              return obj.part === side+"Elbow";
+          });
+      var shoulder = keypoints.find( obj => {
+              return obj.part === side+"Shoulder";
+          });
+      var opshoulder = keypoints.find( obj => {
+              return obj.part === opside+"Shoulder";
+          });
+      var s2e = this.getDistance(shoulder.position,wrist.position);
+      var s2s = this.getDistance(shoulder.position,opshoulder.position);
+      var e2w = this.getDistance(elbow.position,wrist.position)
+      
+      if (s2e/s2s>this.ratioThreshold) {return true;}
+      else {
+        var flag= this.getAngle(1,keypoints)<90;
+        return flag;
+    }
+
+    }
+
+
     main_function(keypoints){
         var bicep_angle = this.getAngle(1, keypoints);
         var elbow_angle = this.getAngle(2, keypoints);
-        // console.log("bicep_angle", bicep_angle)
-        // console.log("elbow_angle", elbow_angle)
 
         if (bicep_angle !== -1){
-            if(this.flag1 && !this.flag2 && !this.flag3 && bicep_angle < 90){
-                this.flag1 = false;
-                this.flag2 = true;
+            if(this.state==1 && bicep_angle < 90){
                 console.log('state 2');
+                this.state = 2;
             }
-            else if(this.flag2 && !this.flag1 && !this.flag3 && bicep_angle < 60){
-                this.flag2 = false;
-                this.flag3 = true;
+            else if(this.state==2 && bicep_angle < 60){
                 console.log('state 3', bicep_angle);
+                this.state = 3;
             }
-            else if(this.flag3 && !this.flag1 && !this.flag2 && bicep_angle > 90 && bicep_angle < 120){
-                this.flag3 = false;
-                this.flag2 = true;
-                console.log('state 2');
-            }
-            else if(this.flag2 && !this.flag1 && !this.flag3 && bicep_angle > 120){
+            else if(this.state==3 && bicep_angle > 140){
                 this.rep += 1;
                 console.log("REP", this.rep);
-                this.flag2 = false;
-                this.flag1 = true;
                 console.log('state 1');
+                this.state = 1;
             }
         }
 

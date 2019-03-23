@@ -837,9 +837,17 @@ module.exports = webpackAsyncContext;
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
+	"./feedback/feedback.module": [
+		"./src/app/feedback/feedback.module.ts",
+		"feedback-feedback-module"
+	],
 	"./home/home.module": [
 		"./src/app/home/home.module.ts",
 		"home-home-module"
+	],
+	"./start/start.module": [
+		"./src/app/start/start.module.ts",
+		"start-start-module"
 	]
 };
 function webpackAsyncContext(req) {
@@ -881,8 +889,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var routes = [
-    { path: '', redirectTo: 'home', pathMatch: 'full' },
+    { path: '', redirectTo: 'start', pathMatch: 'full' },
     { path: 'home', loadChildren: './home/home.module#HomePageModule' },
+    { path: 'feedback', loadChildren: './feedback/feedback.module#FeedbackPageModule' },
+    { path: 'start', loadChildren: './start/start.module#StartPageModule' },
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -926,17 +936,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
 /* harmony import */ var _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic-native/splash-screen/ngx */ "./node_modules/@ionic-native/splash-screen/ngx/index.js");
 /* harmony import */ var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/status-bar/ngx */ "./node_modules/@ionic-native/status-bar/ngx/index.js");
+/* harmony import */ var _start_start_page__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./start/start.page */ "./src/app/start/start.page.ts");
+
 
 
 
 
 
 var AppComponent = /** @class */ (function () {
-    // rootPage: any = Home;
     function AppComponent(platform, splashScreen, statusBar) {
         this.platform = platform;
         this.splashScreen = splashScreen;
         this.statusBar = statusBar;
+        this.rootPage = _start_start_page__WEBPACK_IMPORTED_MODULE_5__["StartPage"];
         this.initializeApp();
     }
     AppComponent.prototype.initializeApp = function () {
@@ -981,7 +993,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic-native/splash-screen/ngx */ "./node_modules/@ionic-native/splash-screen/ngx/index.js");
 /* harmony import */ var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic-native/status-bar/ngx */ "./node_modules/@ionic-native/status-bar/ngx/index.js");
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _app_myclass__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./app.myclass */ "./src/app/app.myclass.ts");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
 
 
 
@@ -991,7 +1004,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-// import { Home } from './home/home.page';
+
 
 var AppModule = /** @class */ (function () {
     function AppModule() {
@@ -1000,8 +1013,9 @@ var AppModule = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             declarations: [_app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]],
             entryComponents: [],
-            imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"].forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_9__["AppRoutingModule"]],
+            imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"].forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_10__["AppRoutingModule"]],
             providers: [
+                _app_myclass__WEBPACK_IMPORTED_MODULE_9__["MyClass"],
                 _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_7__["StatusBar"],
                 _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_6__["SplashScreen"],
                 _ionic_native_camera_preview_ngx__WEBPACK_IMPORTED_MODULE_4__["CameraPreview"],
@@ -1011,6 +1025,93 @@ var AppModule = /** @class */ (function () {
         })
     ], AppModule);
     return AppModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/app.myclass.ts":
+/*!********************************!*\
+  !*** ./src/app/app.myclass.ts ***!
+  \********************************/
+/*! exports provided: MyClass */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MyClass", function() { return MyClass; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var MyClass = /** @class */ (function () {
+    function MyClass() {
+    }
+    MyClass.prototype.someFunction = function () {
+        console.log("I do something useful!");
+    };
+    MyClass = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], MyClass);
+    return MyClass;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/start/start.page.html":
+/*!***************************************!*\
+  !*** ./src/app/start/start.page.html ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-title>TrainSmart</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n<h1>Welcome to TrainSmart</h1>\n<ion-button color=\"dark\" block>Workout Stats <ion-icon name=\"stats\">Workout Stats</ion-icon> </ion-button>\n<br>\n<br>\n<ion-button ion-button color=\"secondary\" href=\"/home\" block>Start Workout <ion-icon name=\"flame\"></ion-icon></ion-button>\n\n</ion-content>\n"
+
+/***/ }),
+
+/***/ "./src/app/start/start.page.scss":
+/*!***************************************!*\
+  !*** ./src/app/start/start.page.scss ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "ion-button {\n  font-size: 20px;\n  height: 60px;\n  width: 100%;\n  position: relative; }\n\nbody {\n  background-color: greenyellow; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy92aXNobnVjaG9wcmEvUHJvamVjdC9meXAvc3JjL2FwcC9zdGFydC9zdGFydC5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFFQyxlQUFlO0VBQ2YsWUFBWTtFQUNaLFdBQVc7RUFDWCxrQkFBa0IsRUFBQTs7QUFHbkI7RUFFQyw2QkFBNkIsRUFBQSIsImZpbGUiOiJzcmMvYXBwL3N0YXJ0L3N0YXJ0LnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi1idXR0b25cbntcblx0Zm9udC1zaXplOiAyMHB4O1xuXHRoZWlnaHQ6IDYwcHg7XG5cdHdpZHRoOiAxMDAlO1xuXHRwb3NpdGlvbjogcmVsYXRpdmU7XG59XG5cbmJvZHlcbntcblx0YmFja2dyb3VuZC1jb2xvcjogZ3JlZW55ZWxsb3c7XG59Il19 */"
+
+/***/ }),
+
+/***/ "./src/app/start/start.page.ts":
+/*!*************************************!*\
+  !*** ./src/app/start/start.page.ts ***!
+  \*************************************/
+/*! exports provided: StartPage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StartPage", function() { return StartPage; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var StartPage = /** @class */ (function () {
+    function StartPage() {
+    }
+    StartPage.prototype.ngOnInit = function () {
+    };
+    StartPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-start',
+            template: __webpack_require__(/*! ./start.page.html */ "./src/app/start/start.page.html"),
+            styles: [__webpack_require__(/*! ./start.page.scss */ "./src/app/start/start.page.scss")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], StartPage);
+    return StartPage;
 }());
 
 
@@ -1078,7 +1179,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/yashvardhannevatia/Desktop/firstProject/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /Users/vishnuchopra/Project/fyp/src/main.ts */"./src/main.ts");
 
 
 /***/ })
