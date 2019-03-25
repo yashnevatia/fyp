@@ -1,39 +1,40 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Ionic Blank
+      Home
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
+
 <ion-content padding>
-  <!-- The world is your oyster.
-  <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p> -->
-  <!-- TensorFlow says {{ prediction }} -->
-  <br>
-  <!-- <input type="number" (change)="predict($event.target.value)"> -->
-  <!-- <video id = "video">
+    <!-- <ion-grid style="height: 10%">
+        <!-- <ion-row justify-content-center align-items-center style="height: 100%; flex-direction: column">
+            <ion-button href="/exercise">Start Workout</ion-button>
+        </ion-row> -->
+        <!-- <ion-row align-items-center>
+            <ion-button href="/exercise">Start Workout</ion-button>
+        </ion-row> -->
+    <!-- </ion-grid> -->
 
-  </video> -->
-
-  <!-- <div id='main' style='display:none'>
-        <video id="video" playsinline style=" -moz-transform: scaleX(-1);
-        -o-transform: scaleX(-1);
-        -webkit-transform: scaleX(-1);
-        transform: scaleX(-1);
-        display: none;
-        ">
-        </video>
-        <canvas id="output" ></canvas>
-    </div> -->
-    <ion-content overflow-scroll="true">
-      <video id="video" ontrols="controls" preload="metadata" autoplay="autoplay" webkit-playsinline="webkit-playsinline" class="videoPlayer">
-       <source  type="video/mp4" />
-      </video>
-      <h2>{{rep}}</h2>
-      <h1 style="color:red"*ngIf="elbow">CHECK ELBOW ANGLE.</h1>
-      <ion-button href="/feedback">Feedback</ion-button>
-      <ion-button (click)="go()">Go</ion-button>
-    </ion-content>
-
+    <ion-list>
+    <ion-item>
+        <ion-label stacked>Bicep Curl Sets</ion-label>
+        <ion-input type="number" text-right id="input" [(ngModel)]="curl_sets"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label stacked>Front Raise Sets</ion-label>
+        <ion-input type="number" text-right id="input" [(ngModel)]="raise_sets"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label stacked>Reps per set</ion-label>
+        <ion-input type="number" text-right id="input" [(ngModel)]="reps_per_set" ></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label stacked>Rest between sets (secs)</ion-label>
+        <ion-input type="number" text-right id="input" [(ngModel)]="rest_time"></ion-input>
+    </ion-item>
+    <!-- <ion-button href="/exercise">Start Workout</ion-button> -->
+    <ion-button (click)=go()>Start Workout</ion-button>
+  </ion-list>
 </ion-content>
