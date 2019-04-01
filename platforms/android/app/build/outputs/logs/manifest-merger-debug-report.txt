@@ -1,14 +1,14 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml:2:1-18:12
-INJECTED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml:2:1-18:12
-INJECTED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml:2:1-18:12
-INJECTED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml:2:1-18:12
+ADDED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml:2:1-21:12
+INJECTED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml:2:1-21:12
+INJECTED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml:2:1-21:12
+INJECTED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml:2:1-21:12
 MERGED from [com.android.support:exifinterface:25.4.0] /Users/vishnuchopra/.gradle/caches/transforms-1/files-1.1/exifinterface-25.4.0.aar/9763c6985b23f41fe2d55f647e895fb0/AndroidManifest.xml:17:1-28:12
 MERGED from [:CordovaLib] /Users/vishnuchopra/Project/fyp/platforms/android/CordovaLib/build/intermediates/manifests/full/debug/AndroidManifest.xml:20:1-27:12
-INJECTED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml:2:1-18:12
-INJECTED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml:2:1-18:12
-INJECTED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml:2:1-18:12
+INJECTED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml:2:1-21:12
+INJECTED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml:2:1-21:12
+INJECTED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml:2:1-21:12
 	package
 		ADDED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml:2:98-124
 		INJECTED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml
@@ -117,6 +117,18 @@ uses-permission#android.permission.CAMERA
 ADDED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml:17:5-65
 	android:name
 		ADDED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml:17:22-62
+uses-permission#android.permission.BLUETOOTH
+ADDED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml:18:5-68
+	android:name
+		ADDED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml:18:22-65
+uses-permission#android.permission.BLUETOOTH_ADMIN
+ADDED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml:19:5-74
+	android:name
+		ADDED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml:19:22-71
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml:20:5-81
+	android:name
+		ADDED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml:20:22-78
 meta-data#android.support.VERSION
 ADDED from [com.android.support:exifinterface:25.4.0] /Users/vishnuchopra/.gradle/caches/transforms-1/files-1.1/exifinterface-25.4.0.aar/9763c6985b23f41fe2d55f647e895fb0/AndroidManifest.xml:23:9-25:38
 	android:value

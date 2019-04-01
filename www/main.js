@@ -8,37 +8,39 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./0owmtgfs.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/0owmtgfs.entry.js",
+	"./0hsmjqf5.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/0hsmjqf5.entry.js",
+		2,
 		"common",
-		58
+		132
 	],
-	"./0owmtgfs.sc.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/0owmtgfs.sc.entry.js",
+	"./0hsmjqf5.sc.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/0hsmjqf5.sc.entry.js",
+		2,
 		"common",
-		59
+		133
 	],
 	"./0utrggve.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/0utrggve.entry.js",
 		"common",
-		60
+		58
 	],
 	"./0utrggve.sc.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/0utrggve.sc.entry.js",
 		"common",
-		61
+		59
 	],
 	"./1kttiagf.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/1kttiagf.entry.js",
 		0,
 		"common",
-		132
+		134
 	],
 	"./1kttiagf.sc.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/1kttiagf.sc.entry.js",
 		0,
 		"common",
-		133
+		135
 	],
 	"./2g1gy9f9.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/2g1gy9f9.entry.js",
@@ -53,12 +55,12 @@ var map = {
 	"./4m739wpj.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/4m739wpj.entry.js",
 		"common",
-		62
+		60
 	],
 	"./4m739wpj.sc.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/4m739wpj.sc.entry.js",
 		"common",
-		63
+		61
 	],
 	"./5ey3bs99.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/5ey3bs99.entry.js",
@@ -69,18 +71,6 @@ var map = {
 		"./node_modules/@ionic/core/dist/esm/es5/build/5ey3bs99.sc.entry.js",
 		"common",
 		13
-	],
-	"./5qlzjcgv.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/5qlzjcgv.entry.js",
-		0,
-		"common",
-		134
-	],
-	"./5qlzjcgv.sc.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/5qlzjcgv.sc.entry.js",
-		0,
-		"common",
-		135
 	],
 	"./5u5c8wcw.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/5u5c8wcw.entry.js",
@@ -94,6 +84,16 @@ var map = {
 		"common",
 		137
 	],
+	"./6dsdnxyn.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/6dsdnxyn.entry.js",
+		"common",
+		62
+	],
+	"./6dsdnxyn.sc.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/6dsdnxyn.sc.entry.js",
+		"common",
+		63
+	],
 	"./6eqoprbr.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/6eqoprbr.entry.js",
 		0,
@@ -106,14 +106,14 @@ var map = {
 		"common",
 		139
 	],
-	"./7lrb3ory.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/7lrb3ory.entry.js",
+	"./6g4thfnt.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/6g4thfnt.entry.js",
 		0,
 		"common",
 		114
 	],
-	"./7lrb3ory.sc.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/7lrb3ory.sc.entry.js",
+	"./6g4thfnt.sc.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/6g4thfnt.sc.entry.js",
 		0,
 		"common",
 		115
@@ -128,17 +128,15 @@ var map = {
 		"common",
 		15
 	],
-	"./9i747kfk.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/9i747kfk.entry.js",
-		2,
+	"./a7z8hams.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/a7z8hams.entry.js",
 		"common",
-		140
+		16
 	],
-	"./9i747kfk.sc.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/9i747kfk.sc.entry.js",
-		2,
+	"./a7z8hams.sc.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/a7z8hams.sc.entry.js",
 		"common",
-		141
+		17
 	],
 	"./adaxrxoq.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/adaxrxoq.entry.js",
@@ -150,161 +148,137 @@ var map = {
 		"common",
 		117
 	],
-	"./afjpklm4.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/afjpklm4.entry.js",
-		"common",
-		64
-	],
-	"./afjpklm4.sc.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/afjpklm4.sc.entry.js",
-		"common",
-		65
-	],
 	"./ao2edhxl.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/ao2edhxl.entry.js",
 		"common",
-		16
+		18
 	],
 	"./ao2edhxl.sc.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/ao2edhxl.sc.entry.js",
 		"common",
-		17
+		19
 	],
 	"./av1nxhcg.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/av1nxhcg.entry.js",
 		"common",
-		18
+		20
 	],
 	"./av1nxhcg.sc.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/av1nxhcg.sc.entry.js",
 		"common",
-		19
+		21
 	],
 	"./b9hbg5md.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/b9hbg5md.entry.js",
 		"common",
-		66
+		64
 	],
 	"./b9hbg5md.sc.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/b9hbg5md.sc.entry.js",
 		"common",
-		67
+		65
+	],
+	"./bfxkhdio.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/bfxkhdio.entry.js",
+		"common",
+		22
+	],
+	"./bfxkhdio.sc.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/bfxkhdio.sc.entry.js",
+		"common",
+		23
 	],
 	"./bneiwm8s.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/bneiwm8s.entry.js",
 		"common",
-		20
+		24
 	],
 	"./bneiwm8s.sc.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/bneiwm8s.sc.entry.js",
 		"common",
-		21
-	],
-	"./bvwzwweh.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/bvwzwweh.entry.js",
-		"common",
-		22
-	],
-	"./bvwzwweh.sc.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/bvwzwweh.sc.entry.js",
-		"common",
-		23
+		25
 	],
 	"./bzgyi6uy.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/bzgyi6uy.entry.js",
 		"common",
-		24
+		26
 	],
 	"./bzgyi6uy.sc.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/bzgyi6uy.sc.entry.js",
 		"common",
-		25
+		27
 	],
 	"./c2kiol1t.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/c2kiol1t.entry.js",
 		"common",
-		26
+		28
 	],
 	"./c2kiol1t.sc.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/c2kiol1t.sc.entry.js",
 		"common",
-		27
-	],
-	"./c3nbktys.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/c3nbktys.entry.js",
-		0,
-		"common",
-		142
-	],
-	"./c3nbktys.sc.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/c3nbktys.sc.entry.js",
-		0,
-		"common",
-		143
+		29
 	],
 	"./c3xilup3.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/c3xilup3.entry.js",
 		"common",
-		28
+		30
 	],
 	"./c3xilup3.sc.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/c3xilup3.sc.entry.js",
 		"common",
-		29
-	],
-	"./ccuursht.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/ccuursht.entry.js",
-		2,
-		"common",
-		144
-	],
-	"./ccuursht.sc.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/ccuursht.sc.entry.js",
-		2,
-		"common",
-		145
+		31
 	],
 	"./coytbtgb.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/coytbtgb.entry.js",
 		"common",
-		76
+		72
 	],
 	"./coytbtgb.sc.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/coytbtgb.sc.entry.js",
 		"common",
-		77
+		73
+	],
+	"./cwd9g9my.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/cwd9g9my.entry.js",
+		"common",
+		66
+	],
+	"./cwd9g9my.sc.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/cwd9g9my.sc.entry.js",
+		"common",
+		67
+	],
+	"./dlyuptke.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/dlyuptke.entry.js",
+		0,
+		"common",
+		142
+	],
+	"./dlyuptke.sc.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/dlyuptke.sc.entry.js",
+		0,
+		"common",
+		143
 	],
 	"./dznymaqz.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/dznymaqz.entry.js",
 		"common",
-		78
+		74
 	],
 	"./dznymaqz.sc.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/dznymaqz.sc.entry.js",
 		"common",
-		79
+		75
 	],
-	"./fazrg12f.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/fazrg12f.entry.js",
-		0,
+	"./eljrbuqs.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/eljrbuqs.entry.js",
 		"common",
-		148
+		76
 	],
-	"./fazrg12f.sc.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/fazrg12f.sc.entry.js",
-		0,
+	"./eljrbuqs.sc.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/eljrbuqs.sc.entry.js",
 		"common",
-		149
-	],
-	"./fcbdrndu.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/fcbdrndu.entry.js",
-		"common",
-		80
-	],
-	"./fcbdrndu.sc.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/fcbdrndu.sc.entry.js",
-		"common",
-		81
+		77
 	],
 	"./ffukzwt6.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/ffukzwt6.entry.js",
@@ -315,18 +289,6 @@ var map = {
 		"./node_modules/@ionic/core/dist/esm/es5/build/ffukzwt6.sc.entry.js",
 		"common",
 		125
-	],
-	"./fki3pb3x.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/fki3pb3x.entry.js",
-		0,
-		"common",
-		150
-	],
-	"./fki3pb3x.sc.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/fki3pb3x.sc.entry.js",
-		0,
-		"common",
-		151
 	],
 	"./fokfxvfn.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/fokfxvfn.entry.js",
@@ -341,32 +303,32 @@ var map = {
 	"./gwiqb6zv.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/gwiqb6zv.entry.js",
 		"common",
-		30
+		32
 	],
 	"./gwiqb6zv.sc.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/gwiqb6zv.sc.entry.js",
 		"common",
-		31
+		33
 	],
 	"./hs4xwlox.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/hs4xwlox.entry.js",
 		"common",
-		32
+		34
 	],
 	"./hs4xwlox.sc.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/hs4xwlox.sc.entry.js",
 		"common",
-		33
+		35
 	],
 	"./jdcptvrs.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/jdcptvrs.entry.js",
 		"common",
-		82
+		78
 	],
 	"./jdcptvrs.sc.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/jdcptvrs.sc.entry.js",
 		"common",
-		83
+		79
 	],
 	"./jpkvsu5y.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/jpkvsu5y.entry.js",
@@ -381,146 +343,200 @@ var map = {
 	"./jtkjzkgg.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/jtkjzkgg.entry.js",
 		"common",
-		34
+		36
 	],
 	"./jtkjzkgg.sc.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/jtkjzkgg.sc.entry.js",
 		"common",
-		35
+		37
 	],
 	"./jwqvpjte.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/jwqvpjte.entry.js",
 		"common",
-		84
+		80
 	],
 	"./jwqvpjte.sc.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/jwqvpjte.sc.entry.js",
 		"common",
-		85
+		81
+	],
+	"./jzvvnvez.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/jzvvnvez.entry.js",
+		0,
+		"common",
+		144
+	],
+	"./jzvvnvez.sc.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/jzvvnvez.sc.entry.js",
+		0,
+		"common",
+		145
 	],
 	"./l1m0sgjq.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/l1m0sgjq.entry.js",
 		"common",
-		86
+		82
 	],
 	"./l1m0sgjq.sc.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/l1m0sgjq.sc.entry.js",
 		"common",
-		87
+		83
 	],
-	"./ly8zbpmk.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/ly8zbpmk.entry.js",
+	"./ladxfuum.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/ladxfuum.entry.js",
+		0,
 		"common",
-		36
+		146
 	],
-	"./ly8zbpmk.sc.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/ly8zbpmk.sc.entry.js",
+	"./ladxfuum.sc.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/ladxfuum.sc.entry.js",
+		0,
 		"common",
-		37
+		147
 	],
-	"./mlczeont.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/mlczeont.entry.js",
-		"common",
-		70
-	],
-	"./mlczeont.sc.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/mlczeont.sc.entry.js",
-		"common",
-		71
-	],
-	"./mnim3usc.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/mnim3usc.entry.js",
+	"./ludl7zh0.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/ludl7zh0.entry.js",
 		"common",
 		38
 	],
-	"./mnim3usc.sc.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/mnim3usc.sc.entry.js",
+	"./ludl7zh0.sc.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/ludl7zh0.sc.entry.js",
 		"common",
 		39
 	],
-	"./mxzbuihf.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/mxzbuihf.entry.js",
-		0,
-		"common",
-		152
-	],
-	"./mxzbuihf.sc.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/mxzbuihf.sc.entry.js",
-		0,
-		"common",
-		153
-	],
-	"./n5wnzrch.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/n5wnzrch.entry.js",
-		"common",
-		72
-	],
-	"./n5wnzrch.sc.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/n5wnzrch.sc.entry.js",
-		"common",
-		73
-	],
-	"./nr6wcehx.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/nr6wcehx.entry.js",
-		"common",
-		40
-	],
-	"./nr6wcehx.sc.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/nr6wcehx.sc.entry.js",
-		"common",
-		41
-	],
-	"./o2g4txhh.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/o2g4txhh.entry.js",
-		"common",
-		88
-	],
-	"./o2g4txhh.sc.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/o2g4txhh.sc.entry.js",
-		"common",
-		89
-	],
-	"./oboc8zd4.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/oboc8zd4.entry.js",
-		"common",
-		90
-	],
-	"./oboc8zd4.sc.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/oboc8zd4.sc.entry.js",
-		"common",
-		91
-	],
-	"./od5ko9fd.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/od5ko9fd.entry.js",
+	"./lwxjzkgx.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/lwxjzkgx.entry.js",
 		0,
 		"common",
 		118
 	],
-	"./od5ko9fd.sc.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/od5ko9fd.sc.entry.js",
+	"./lwxjzkgx.sc.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/lwxjzkgx.sc.entry.js",
 		0,
 		"common",
 		119
 	],
+	"./ly8zbpmk.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/ly8zbpmk.entry.js",
+		"common",
+		40
+	],
+	"./ly8zbpmk.sc.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/ly8zbpmk.sc.entry.js",
+		"common",
+		41
+	],
+	"./n5wnzrch.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/n5wnzrch.entry.js",
+		"common",
+		70
+	],
+	"./n5wnzrch.sc.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/n5wnzrch.sc.entry.js",
+		"common",
+		71
+	],
+	"./neixdayp.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/neixdayp.entry.js",
+		"common",
+		42
+	],
+	"./neixdayp.sc.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/neixdayp.sc.entry.js",
+		"common",
+		43
+	],
+	"./nr6wcehx.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/nr6wcehx.entry.js",
+		"common",
+		44
+	],
+	"./nr6wcehx.sc.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/nr6wcehx.sc.entry.js",
+		"common",
+		45
+	],
+	"./o2g4txhh.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/o2g4txhh.entry.js",
+		"common",
+		84
+	],
+	"./o2g4txhh.sc.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/o2g4txhh.sc.entry.js",
+		"common",
+		85
+	],
+	"./oboc8zd4.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/oboc8zd4.entry.js",
+		"common",
+		86
+	],
+	"./oboc8zd4.sc.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/oboc8zd4.sc.entry.js",
+		"common",
+		87
+	],
 	"./odqmlmdd.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/odqmlmdd.entry.js",
 		"common",
-		42
+		46
 	],
 	"./odqmlmdd.sc.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/odqmlmdd.sc.entry.js",
 		"common",
-		43
+		47
 	],
 	"./okpgrmbb.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/okpgrmbb.entry.js",
 		"common",
-		44
+		48
 	],
 	"./okpgrmbb.sc.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/okpgrmbb.sc.entry.js",
 		"common",
-		45
+		49
+	],
+	"./pfpbfexy.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/pfpbfexy.entry.js",
+		"common",
+		88
+	],
+	"./pfpbfexy.sc.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/pfpbfexy.sc.entry.js",
+		"common",
+		89
+	],
+	"./pubwd8xa.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/pubwd8xa.entry.js",
+		"common",
+		90
+	],
+	"./pubwd8xa.sc.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/pubwd8xa.sc.entry.js",
+		"common",
+		91
+	],
+	"./qeoxaimy.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/qeoxaimy.entry.js",
+		2,
+		"common",
+		148
+	],
+	"./qeoxaimy.sc.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/qeoxaimy.sc.entry.js",
+		2,
+		"common",
+		149
+	],
+	"./qrxqqhr4.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/qrxqqhr4.entry.js",
+		"common",
+		92
+	],
+	"./qrxqqhr4.sc.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/qrxqqhr4.sc.entry.js",
+		"common",
+		93
 	],
 	"./qvwswew4.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/qvwswew4.entry.js",
@@ -532,39 +548,49 @@ var map = {
 		"common",
 		121
 	],
-	"./rri2tloh.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/rri2tloh.entry.js",
+	"./rsatbj4w.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/rsatbj4w.entry.js",
 		"common",
-		92
+		94
 	],
-	"./rri2tloh.sc.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/rri2tloh.sc.entry.js",
+	"./rsatbj4w.sc.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/rsatbj4w.sc.entry.js",
 		"common",
-		93
+		95
 	],
 	"./soeaphrm.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/soeaphrm.entry.js",
 		0,
 		"common",
-		154
+		150
 	],
 	"./soeaphrm.sc.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/soeaphrm.sc.entry.js",
 		0,
 		"common",
-		155
+		151
 	],
 	"./sqd5wawk.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/sqd5wawk.entry.js",
 		0,
 		"common",
-		156
+		152
 	],
 	"./sqd5wawk.sc.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/sqd5wawk.sc.entry.js",
 		0,
 		"common",
-		157
+		153
+	],
+	"./sw2yobif.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/sw2yobif.entry.js",
+		"common",
+		50
+	],
+	"./sw2yobif.sc.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/sw2yobif.sc.entry.js",
+		"common",
+		51
 	],
 	"./t547wlk7.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/t547wlk7.entry.js",
@@ -576,25 +602,17 @@ var map = {
 		"common",
 		123
 	],
-	"./tab7npn8.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/tab7npn8.entry.js",
+	"./tluindqz.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/tluindqz.entry.js",
+		0,
 		"common",
-		94
+		154
 	],
-	"./tab7npn8.sc.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/tab7npn8.sc.entry.js",
+	"./tluindqz.sc.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/tluindqz.sc.entry.js",
+		0,
 		"common",
-		95
-	],
-	"./tj5rszjq.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/tj5rszjq.entry.js",
-		"common",
-		74
-	],
-	"./tj5rszjq.sc.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/tj5rszjq.sc.entry.js",
-		"common",
-		75
+		155
 	],
 	"./tpeqvzxx.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/tpeqvzxx.entry.js",
@@ -609,12 +627,12 @@ var map = {
 	"./tqgphjq7.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/tqgphjq7.entry.js",
 		"common",
-		46
+		52
 	],
 	"./tqgphjq7.sc.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/tqgphjq7.sc.entry.js",
 		"common",
-		47
+		53
 	],
 	"./tylmm2yl.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/tylmm2yl.entry.js",
@@ -625,6 +643,18 @@ var map = {
 		"./node_modules/@ionic/core/dist/esm/es5/build/tylmm2yl.sc.entry.js",
 		"common",
 		97
+	],
+	"./ucdtgfa9.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/ucdtgfa9.entry.js",
+		0,
+		"common",
+		156
+	],
+	"./ucdtgfa9.sc.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/ucdtgfa9.sc.entry.js",
+		0,
+		"common",
+		157
 	],
 	"./uegz8gm3.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/uegz8gm3.entry.js",
@@ -654,47 +684,47 @@ var map = {
 		"./node_modules/@ionic/core/dist/esm/es5/build/vbsrxypz.sc.entry.js",
 		159
 	],
-	"./wajpsmly.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/wajpsmly.entry.js",
+	"./vtbkki9o.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/vtbkki9o.entry.js",
 		"common",
-		48
+		102
 	],
-	"./wajpsmly.sc.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/wajpsmly.sc.entry.js",
+	"./vtbkki9o.sc.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/vtbkki9o.sc.entry.js",
 		"common",
-		49
+		103
 	],
-	"./wdewkb4s.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/wdewkb4s.entry.js",
+	"./vxxpn0fi.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/vxxpn0fi.entry.js",
 		0,
 		"common",
 		160
 	],
-	"./wdewkb4s.sc.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/wdewkb4s.sc.entry.js",
+	"./vxxpn0fi.sc.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/vxxpn0fi.sc.entry.js",
 		0,
 		"common",
 		161
 	],
+	"./wajpsmly.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/wajpsmly.entry.js",
+		"common",
+		54
+	],
+	"./wajpsmly.sc.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/wajpsmly.sc.entry.js",
+		"common",
+		55
+	],
 	"./wsfvc8rr.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/wsfvc8rr.entry.js",
 		"common",
-		50
+		56
 	],
 	"./wsfvc8rr.sc.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/wsfvc8rr.sc.entry.js",
 		"common",
-		51
-	],
-	"./wvqczsjg.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/wvqczsjg.entry.js",
-		"common",
-		52
-	],
-	"./wvqczsjg.sc.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/wvqczsjg.sc.entry.js",
-		"common",
-		53
+		57
 	],
 	"./x4ue4dpx.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/x4ue4dpx.entry.js",
@@ -708,45 +738,35 @@ var map = {
 		"common",
 		163
 	],
-	"./xfbndl84.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/xfbndl84.entry.js",
-		"common",
-		54
-	],
-	"./xfbndl84.sc.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/xfbndl84.sc.entry.js",
-		"common",
-		55
-	],
 	"./xgnma4yj.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/xgnma4yj.entry.js",
 		"common",
-		102
+		104
 	],
 	"./xgnma4yj.sc.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/xgnma4yj.sc.entry.js",
 		"common",
-		103
-	],
-	"./xrxaow8a.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/xrxaow8a.entry.js",
-		"common",
-		104
-	],
-	"./xrxaow8a.sc.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/xrxaow8a.sc.entry.js",
-		"common",
 		105
+	],
+	"./xnfqzgvy.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/xnfqzgvy.entry.js",
+		"common",
+		106
+	],
+	"./xnfqzgvy.sc.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/xnfqzgvy.sc.entry.js",
+		"common",
+		107
 	],
 	"./ycyyhg01.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/ycyyhg01.entry.js",
 		"common",
-		106
+		108
 	],
 	"./ycyyhg01.sc.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/ycyyhg01.sc.entry.js",
 		"common",
-		107
+		109
 	],
 	"./ye5age0r.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/es5/build/ye5age0r.entry.js",
@@ -756,23 +776,13 @@ var map = {
 		"./node_modules/@ionic/core/dist/esm/es5/build/ye5age0r.sc.entry.js",
 		165
 	],
-	"./yurs1umq.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/yurs1umq.entry.js",
-		"common",
-		108
-	],
-	"./yurs1umq.sc.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/yurs1umq.sc.entry.js",
-		"common",
-		109
-	],
-	"./yz37im3e.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/yz37im3e.entry.js",
+	"./yxulgzjp.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/yxulgzjp.entry.js",
 		"common",
 		110
 	],
-	"./yz37im3e.sc.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/yz37im3e.sc.entry.js",
+	"./yxulgzjp.sc.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/es5/build/yxulgzjp.sc.entry.js",
 		"common",
 		111
 	],
@@ -795,16 +805,6 @@ var map = {
 		"./node_modules/@ionic/core/dist/esm/es5/build/zdhyxh0f.sc.entry.js",
 		"common",
 		113
-	],
-	"./zykaqnfi.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/zykaqnfi.entry.js",
-		"common",
-		56
-	],
-	"./zykaqnfi.sc.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/es5/build/zykaqnfi.sc.entry.js",
-		"common",
-		57
 	]
 };
 function webpackAsyncContext(req) {
@@ -995,6 +995,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
 /* harmony import */ var _app_myclass__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./app.myclass */ "./src/app/app.myclass.ts");
 /* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _ionic_native_bluetooth_serial_ngx__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @ionic-native/bluetooth-serial/ngx */ "./node_modules/@ionic-native/bluetooth-serial/ngx/index.js");
+
 
 
 
@@ -1019,6 +1021,7 @@ var AppModule = /** @class */ (function () {
                 _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_7__["StatusBar"],
                 _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_6__["SplashScreen"],
                 _ionic_native_camera_preview_ngx__WEBPACK_IMPORTED_MODULE_4__["CameraPreview"],
+                _ionic_native_bluetooth_serial_ngx__WEBPACK_IMPORTED_MODULE_11__["BluetoothSerial"],
                 { provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicRouteStrategy"] }
             ],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]]
@@ -1069,7 +1072,7 @@ var MyClass = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-title>TrainSmart</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n<h1>Welcome to TrainSmart</h1>\n<ion-button color=\"dark\" block>Workout Stats <ion-icon name=\"stats\">Workout Stats</ion-icon> </ion-button>\n<br>\n<br>\n<ion-button ion-button color=\"secondary\" href=\"/home\" block>Start Workout <ion-icon name=\"flame\"></ion-icon></ion-button>\n\n</ion-content>\n"
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-title>TrainSmart</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content padding color=\"base\">\n<h1>Welcome to TrainSmart</h1>\n<ion-button color=\"dark\" block>Workout Stats <ion-icon name=\"stats\">Workout Stats</ion-icon> </ion-button>\n<br>\n<br>\n<ion-button ion-button color=\"secondary\" href=\"/home\" block>Start Workout <ion-icon name=\"flame\"></ion-icon></ion-button>\n<br>\n<br>\n<ion-button ion-button color=\"light\" (click)=\"turnOn();\" block>LED <ion-icon name=\"light\"></ion-icon></ion-button>\n</ion-content>\n"
 
 /***/ }),
 
@@ -1096,12 +1099,271 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StartPage", function() { return StartPage; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ionic_native_bluetooth_serial_ngx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic-native/bluetooth-serial/ngx */ "./node_modules/@ionic-native/bluetooth-serial/ngx/index.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+
+
 
 
 var StartPage = /** @class */ (function () {
-    function StartPage() {
+    function StartPage(alertCtrl, bluetoothSerial, toastCtrl) {
+        this.alertCtrl = alertCtrl;
+        this.bluetoothSerial = bluetoothSerial;
+        this.toastCtrl = toastCtrl;
+        this.HC05 = "HC-05";
+        this.success = function (data) { return alert(data); };
+        this.fail = function (error) { return alert(error); };
+        this.model = {};
     }
     StartPage.prototype.ngOnInit = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var address, i;
+            var _this = this;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        console.log("Here");
+                        return [4 /*yield*/, this.bluetoothSerial.enable()];
+                    case 1:
+                        _a.sent();
+                        return [4 /*yield*/, this.bluetoothSerial.list().then(function (successfulPairing) {
+                                _this.pairedDevices = successfulPairing;
+                                console.log(_this.pairedDevices);
+                            }, function (err) {
+                                console.log(err);
+                            })];
+                    case 2:
+                        _a.sent();
+                        address = "";
+                        for (i = this.pairedDevices.length - 1; i >= 0; i--) {
+                            if (this.pairedDevices[i].name == this.HC05) {
+                                address = this.pairedDevices[i].address;
+                                break;
+                            }
+                        }
+                        return [4 /*yield*/, this.selectDevice(address)];
+                    case 3:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    // console.log(paired);
+    /* Slide 1 - Find, Connect, Disconnect */
+    StartPage.prototype.startScanning = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var _this = this;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        this.pairedDevices = null;
+                        this.unpairedDevices = null;
+                        this.gettingDevices = true;
+                        return [4 /*yield*/, this.bluetoothSerial.discoverUnpaired().then(function (success) {
+                                _this.unpairedDevices = success;
+                                _this.gettingDevices = false;
+                                success.forEach(function (element) {
+                                    if (element.name == _this.HC05) {
+                                        _this.selectDevice(element.address);
+                                    }
+                                    console.log(element);
+                                });
+                            }, function (err) {
+                                console.log(err);
+                            })];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    StartPage.prototype.selectDevice = function (address) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var alert;
+            var _this = this;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.alertCtrl.create({
+                            header: 'Connect',
+                            message: 'Do you want to connect with?' + address,
+                            buttons: [
+                                {
+                                    text: 'Cancel',
+                                    role: 'cancel',
+                                    handler: function () {
+                                        console.log('Cancel clicked');
+                                    }
+                                },
+                                {
+                                    text: 'Connect',
+                                    handler: function () { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
+                                        return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                                            switch (_a.label) {
+                                                case 0:
+                                                    console.log(address);
+                                                    return [4 /*yield*/, this.bluetoothSerial.connect(address).subscribe(this.success, this.fail)];
+                                                case 1:
+                                                    _a.sent();
+                                                    return [2 /*return*/];
+                                            }
+                                        });
+                                    }); }
+                                }
+                            ]
+                        })];
+                    case 1:
+                        alert = _a.sent();
+                        return [4 /*yield*/, alert.present()];
+                    case 2:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    StartPage.prototype.disconnect = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var alert;
+            var _this = this;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.alertCtrl.create({
+                            header: 'Disconnect?',
+                            message: 'Do you want to Disconnect?',
+                            buttons: [
+                                {
+                                    text: 'Cancel',
+                                    role: 'cancel',
+                                    handler: function () {
+                                        console.log('Cancel clicked');
+                                    }
+                                },
+                                {
+                                    text: 'Disconnect',
+                                    handler: function () {
+                                        _this.bluetoothSerial.disconnect();
+                                    }
+                                }
+                            ]
+                        })];
+                    case 1:
+                        alert = _a.sent();
+                        return [4 /*yield*/, alert.present()];
+                    case 2:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    /* Slide 2 - Turn LED On and OFF */
+    StartPage.prototype.turnOn = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var ctrl;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        ctrl = this;
+                        return [4 /*yield*/, this.bluetoothSerial.write('h').then(function (success) {
+                                console.log(success);
+                                ctrl.model.ledResponse = success;
+                            }, function (failure) {
+                                console.log(failure);
+                                ctrl.model.ledResponse = failure;
+                            })];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    StartPage.prototype.turnOff = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var ctrl;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        ctrl = this;
+                        return [4 /*yield*/, this.bluetoothSerial.write('0').then(function (success) {
+                                console.log(success);
+                                ctrl.model.ledResponse = success;
+                            }, function (failure) {
+                                console.log(failure);
+                                ctrl.model.ledResponse = failure;
+                            })];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    /* Slide 3 - Custom text read and write. */
+    StartPage.prototype.readThings = function () {
+        var ctrl = this;
+        this.bluetoothSerial.read().then(function (success) {
+            console.log(success);
+            ctrl.model.readResponse = success;
+        }, function (failure) {
+            console.log(failure);
+            ctrl.model.readResponse = failure;
+        });
+    };
+    StartPage.prototype.writeThings = function () {
+        var ctrl = this;
+        this.bluetoothSerial.write(this.model.writeThis).then(function (success) {
+            console.log(success);
+        }, function (failure) {
+            console.log(failure);
+        });
+    };
+    /* Slide 4 */
+    StartPage.prototype.util = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.bluetoothSerial.isEnabled().then(function (res) {
+                            console.log("isEnabled() : " + res);
+                        })];
+                    case 1:
+                        _a.sent();
+                        return [4 /*yield*/, this.bluetoothSerial.isConnected().then(function (res) {
+                                console.log("isConnected() : " + res);
+                            })];
+                    case 2:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    StartPage.prototype.showSettings = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.bluetoothSerial.showBluetoothSettings()];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    StartPage.prototype.listThings = function () {
+        this.bluetoothSerial.list().then(function (data) {
+            console.log(data);
+        });
+    };
+    StartPage.prototype.writeThingsExample = function () {
+        // Write a string
+        this.bluetoothSerial.write('hello world').then(function (res) {
+            console.log(res);
+        }, function (res) {
+            console.log(res);
+        });
     };
     StartPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1109,7 +1371,7 @@ var StartPage = /** @class */ (function () {
             template: __webpack_require__(/*! ./start.page.html */ "./src/app/start/start.page.html"),
             styles: [__webpack_require__(/*! ./start.page.scss */ "./src/app/start/start.page.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_3__["AlertController"], _ionic_native_bluetooth_serial_ngx__WEBPACK_IMPORTED_MODULE_2__["BluetoothSerial"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ToastController"]])
     ], StartPage);
     return StartPage;
 }());

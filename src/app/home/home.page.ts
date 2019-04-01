@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import * as tf from '@tensorflow/tfjs';
 import * as posenet from '@tensorflow-models/posenet';
 // import { MyClass } from '../app.myclass';
-import Speech from 'speak-tts';
+// import Speech from 'speak-tts';
 import { Router } from '@angular/router';
+import { BluetoothSerial } from '@ionic-native/bluetooth-serial/ngx';
+import { AlertController, ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -13,12 +15,23 @@ import { Router } from '@angular/router';
 
 export class HomePage implements OnInit{
 
+    // Bluetooth stuff
+    unpairedDevices: any;
+    pairedDevices: any;
+    gettingDevices: Boolean;
+    model: any;
+
+    // Positions shit
+    lastRecorded : any;
+    width : number;
+    height : number;
+
     video: any;
     exercise: any;
     angles: any;
     rep: number;
     elbow: boolean; // elbow error flag.
-    speech: any;
+    // speech: any;
     count: number;
     confidenceThreshold: number;
     state: number;
@@ -29,26 +42,28 @@ export class HomePage implements OnInit{
     lastCheck: boolean;
     STARTED: boolean;
     ratioThreshold: number;
-
-    constructor(private router: Router) {
+    bicepThreshold: number;
+    state1Thresh : number = 140;
+    state2Thresh : number = 99;
+    state3Thresh : number = 70;
+    constructor(private router: Router, private alertCtrl: AlertController, private bluetoothSerial: BluetoothSerial, private toastCtrl: ToastController) {
         this.angles = [];
         this.rep = 0;
         this.elbow = false;
         this.count = 0;
-        this.speech = new Speech();
+        // this.speech = new Speech();
         this.confidenceThreshold = 0.5;
-        this.ratioThreshold = 4.6;
+        this.ratioThreshold = 2.8; /*Set this to 4.0 for non-mobile*/
+        this.bicepThreshold = 80; /*Set this to 90 for non-mobile*/
         this.ORIENTATION_COUNT=0;
         this.CORRECT_ORIENTATION=0;
         this.POSITION_COUNT=0;
         this.state=1;
         this.STARTED=false;
-        this.speech.init().then((data) => {
-            // The "data" object contains the list of available voices and the voice synthesis params
-            console.log("Speech is ready, voices are available", data)
-        }).catch(e => {
-            console.error("An error occured while initializing : ", e)
-        })
+        
+        // Bluetooth stuff
+        bluetoothSerial.enable();
+        this.model = {val:'h'};
     }
 
     endWorkout(){
@@ -73,7 +88,10 @@ export class HomePage implements OnInit{
 
     async setupCamera() {
         const videoWidth = 600;
+        this.width = videoWidth;
         const videoHeight = 500;
+        this.height = videoHeight;
+        this.lastRecorded = this.width/2;
         navigator.getUserMedia = navigator.getUserMedia;
         if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
             throw new Error(
@@ -86,6 +104,8 @@ export class HomePage implements OnInit{
         video.height = videoHeight;
 
         const mobile = this.isMobile();
+        this.bicepThreshold = mobile ? this.bicepThreshold : 90;
+        this.ratioThreshold = mobile ? this.ratioThreshold : 4;
         const stream = await navigator.mediaDevices.getUserMedia({
             'audio': false,
             'video': {
@@ -110,13 +130,14 @@ export class HomePage implements OnInit{
         async function poseDetectionFrame() {
             const pose = await net.estimateSinglePose(
                   video, 0.5, true, 16);
-
+            var dir = me.checkCentral();
+            if(dir!="centre") me.turnOn(dir);
             //ADD CHECK FOR ORIENTATION + POSITION HERE
             var check = me.checkPositionOrientation(pose.keypoints);
-            
+            console.log(me.CORRECT_ORIENTATION);
             if (check==true)
             {   
-                if (me.CORRECT_ORIENTATION>20 || (!me.STARTED && me.CORRECT_ORIENTATION>20))
+                if (me.CORRECT_ORIENTATION>10 || (!me.STARTED && me.CORRECT_ORIENTATION>20))
                 {
                     me.main_function(pose.keypoints);
                 }
@@ -138,7 +159,17 @@ export class HomePage implements OnInit{
       this.video.play();
       console.log('reached here loadVideo 1')
       this.poses(this.video)
-      // return video;
+    }
+
+    checkCentral()
+    {
+      var left_boundary = 0.3*this.width;
+      var right_boundary = 0.7*this.width;
+      // console.log(left_boundary,lastRecorded,right_boundary);
+      // console.log(left_boundary<lastRecorded,lastRecorded<right_boundary);
+      if (left_boundary<this.lastRecorded && this.lastRecorded<right_boundary) return "centre";
+      else if(this.lastRecorded>right_boundary) return 'h';
+      else return 'l';
     }
 
     checkPositionOrientation(keypoints){
@@ -202,6 +233,7 @@ export class HomePage implements OnInit{
           let confidence = keypoints.find( obj => {
             return obj.part == sides[i]+points[j];
           }).score;
+
           sidePoints[sides[i]].push(confidence);
         }
       }
@@ -249,9 +281,14 @@ export class HomePage implements OnInit{
       var s2s = this.getDistance(shoulder.position,opshoulder.position);
       var e2w = this.getDistance(elbow.position,wrist.position)
       
+      this.lastRecorded = (shoulder.position.x + opshoulder.position.x)/2;
+
       if (s2e/s2s>this.ratioThreshold) {return true;}
       else {
-        var flag= this.getAngle(1,keypoints)<90;
+        console.log("ration",(s2e/s2s));
+        var bicep_angle = this.getAngle(1,keypoints);
+        var flag= (bicep_angle<this.bicepThreshold) || (bicep_angle==-1 && this.state!=3);
+        console.log(bicep_angle);
         return flag;
     }
 
@@ -263,15 +300,16 @@ export class HomePage implements OnInit{
         var elbow_angle = this.getAngle(2, keypoints);
 
         if (bicep_angle !== -1){
-            if(this.state==1 && bicep_angle < 90){
+          console.log("BICEP",bicep_angle);
+            if(this.state==1 && bicep_angle < this.state2Thresh){
                 console.log('state 2');
                 this.state = 2;
             }
-            else if(this.state==2 && bicep_angle < 60){
+            else if(this.state==2 && bicep_angle < this.state3Thresh){
                 console.log('state 3', bicep_angle);
                 this.state = 3;
             }
-            else if(this.state==3 && bicep_angle > 140){
+            else if(this.state==3 && bicep_angle > this.state1Thresh){
                 this.rep += 1;
                 console.log("REP", this.rep);
                 console.log('state 1');
@@ -279,18 +317,19 @@ export class HomePage implements OnInit{
             }
         }
 
+
         if (elbow_angle !== -1){
             if (elbow_angle > 15){
                 this.elbow = true;
                 this.count += 1;
                 if (this.count > 20){
-                    this.speech.speak({
-                        text: 'Elbow error ?',
-                    }).then(() => {
-                        console.log("Success !")
-                    }).catch(e => {
-                        console.error("An error occurred :", e)
-                    })
+                    // this.speech.speak({
+                    //     text: 'Elbow error ?',
+                    // }).then(() => {
+                    //     console.log("Success !")
+                    // }).catch(e => {
+                    //     console.error("An error occurred :", e)
+                    // })
                     this.count = 0;
                 }
 
@@ -361,5 +400,31 @@ export class HomePage implements OnInit{
         this.router.navigate(['feedback']);
     }
 
+  async turnOn(dir){
+    var ctrl = this;
+    await this.bluetoothSerial.write(dir).then(function (success) {
+      console.log(success);
+      // ctrl.model.ledResponse = success;
+    }, function (failure) {
+      console.log(failure);
+      // ctrl.model.ledResponse = failure;
+    });
+    // this.model.val = this.model.val=='h' ? '0':'h';
+  }
+
+  success = (data) => alert(data);
+  fail = (error) => alert(error);
+
+  turnOff(){
+    var ctrl = this;
+    this.bluetoothSerial.write('0').then(function (success) {
+      console.log(success);
+      ctrl.model.ledResponse = success;
+    }, function (failure) {
+      console.log(failure);
+      ctrl.model.ledResponse = failure;
+    });
+  }
 
 }
+

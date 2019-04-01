@@ -33,11 +33,12 @@
       <h2>{{rep}}</h2>
       <h2>{{state}}</h2>
       <h1 style="color:red"*ngIf="elbow">CHECK ELBOW ANGLE.</h1>
-      <h1 style="color:red"*ngIf="CORRECT_ORIENTATION<20 && CORRECT_POSITION>=20">PLEASE GET INTO THE CORRECT ORIENTATION</h1>
+      <h1 style="color:red"*ngIf="CORRECT_ORIENTATION<10 && CORRECT_POSITION>=20">PLEASE GET INTO THE CORRECT ORIENTATION</h1>
       <h1 style="color:red"*ngIf="CORRECT_POSITION<20">PLEASE GET INTO THE CORRECT POSITION</h1>
 
       <ion-button href="/feedback">Feedback</ion-button>
       <ion-button (click)="go()">Go</ion-button>
+      <ion-button ion-button color="light" (click)="turnOn();" block>LED <ion-icon name="light"></ion-icon></ion-button>
     </ion-content>
 
 </ion-content>

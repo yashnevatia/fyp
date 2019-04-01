@@ -9,6 +9,9 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { MyClass } from './app.myclass'
 import { AppRoutingModule } from './app-routing.module';
+import { BluetoothSerial } from '@ionic-native/bluetooth-serial/ngx';
+
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,6 +22,7 @@ import { AppRoutingModule } from './app-routing.module';
     StatusBar,
     SplashScreen,
     CameraPreview,
+    BluetoothSerial,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
