@@ -11,7 +11,18 @@ import { AppRoutingModule } from './app-routing.module';
 
 // import { SpeechRecognition } from '@ionic-native/speech-recognition/ngx';
 // import { TextToSpeech } from '@ionic-native/text-to-speech/ngx';
+// import { NgModule } from '@angular/core';
+// import { BrowserModule } from '@angular/platform-browser';
+// import { RouteReuseStrategy } from '@angular/router';
+import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview/ngx';
 
+// import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+// import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+// import { StatusBar } from '@ionic-native/status-bar/ngx';
+// import { AppComponent } from './app.component';
+// import { MyClass } from './app.myclass'
+// import { AppRoutingModule } from './app-routing.module';
+import { BluetoothSerial } from '@ionic-native/bluetooth-serial/ngx';
 import * as firebase from 'firebase/app';
 
 var config = {
@@ -31,6 +42,7 @@ firebase.initializeApp(config);
   providers: [
     StatusBar,
     SplashScreen,
+    BluetoothSerial,
     // SpeechRecognition,
     // TextToSpeech,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
