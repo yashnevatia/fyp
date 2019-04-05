@@ -9,9 +9,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
-// import { SpeechRecognition } from '@ionic-native/speech-recognition/ngx';
-// import { TextToSpeech } from '@ionic-native/text-to-speech/ngx';
-
+import { TextToSpeech } from '@ionic-native/text-to-speech/ngx';
 import * as firebase from 'firebase/app';
 
 var config = {
@@ -31,8 +29,7 @@ firebase.initializeApp(config);
   providers: [
     StatusBar,
     SplashScreen,
-    // SpeechRecognition,
-    // TextToSpeech,
+    TextToSpeech,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

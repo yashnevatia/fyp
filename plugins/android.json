@@ -28,6 +28,12 @@
     },
     "cordova-plugin-camera-preview": {
       "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "cordova-plugin-speechrecognition": {
+      "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "cordova-plugin-tts": {
+      "PACKAGE_NAME": "io.ionic.starter"
     }
   },
   "dependent_plugins": {}

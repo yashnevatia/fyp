@@ -12,7 +12,6 @@ import 'firebase/database';
 
 export class FeedbackPage implements OnInit {
     public items: Array<any> = [];
-    // public itemRef: firebase.database.Reference = firebase.database().ref('/workouts');
     constructor() { }
 
     ngOnInit() {

@@ -1,14 +1,14 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/yashvardhannevatia/Desktop/firstProject/platforms/android/app/src/main/AndroidManifest.xml:2:1-18:12
-INJECTED from /Users/yashvardhannevatia/Desktop/firstProject/platforms/android/app/src/main/AndroidManifest.xml:2:1-18:12
-INJECTED from /Users/yashvardhannevatia/Desktop/firstProject/platforms/android/app/src/main/AndroidManifest.xml:2:1-18:12
-INJECTED from /Users/yashvardhannevatia/Desktop/firstProject/platforms/android/app/src/main/AndroidManifest.xml:2:1-18:12
+ADDED from /Users/yashvardhannevatia/Desktop/firstProject/platforms/android/app/src/main/AndroidManifest.xml:2:1-19:12
+INJECTED from /Users/yashvardhannevatia/Desktop/firstProject/platforms/android/app/src/main/AndroidManifest.xml:2:1-19:12
+INJECTED from /Users/yashvardhannevatia/Desktop/firstProject/platforms/android/app/src/main/AndroidManifest.xml:2:1-19:12
+INJECTED from /Users/yashvardhannevatia/Desktop/firstProject/platforms/android/app/src/main/AndroidManifest.xml:2:1-19:12
 MERGED from [com.android.support:exifinterface:25.4.0] /Users/yashvardhannevatia/.gradle/caches/transforms-1/files-1.1/exifinterface-25.4.0.aar/ec949f4c9ee6b870f2a390f9c6fe9699/AndroidManifest.xml:17:1-28:12
 MERGED from [:CordovaLib] /Users/yashvardhannevatia/Desktop/firstProject/platforms/android/CordovaLib/build/intermediates/manifests/full/debug/AndroidManifest.xml:20:1-27:12
-INJECTED from /Users/yashvardhannevatia/Desktop/firstProject/platforms/android/app/src/main/AndroidManifest.xml:2:1-18:12
-INJECTED from /Users/yashvardhannevatia/Desktop/firstProject/platforms/android/app/src/main/AndroidManifest.xml:2:1-18:12
-INJECTED from /Users/yashvardhannevatia/Desktop/firstProject/platforms/android/app/src/main/AndroidManifest.xml:2:1-18:12
+INJECTED from /Users/yashvardhannevatia/Desktop/firstProject/platforms/android/app/src/main/AndroidManifest.xml:2:1-19:12
+INJECTED from /Users/yashvardhannevatia/Desktop/firstProject/platforms/android/app/src/main/AndroidManifest.xml:2:1-19:12
+INJECTED from /Users/yashvardhannevatia/Desktop/firstProject/platforms/android/app/src/main/AndroidManifest.xml:2:1-19:12
 	package
 		ADDED from /Users/yashvardhannevatia/Desktop/firstProject/platforms/android/app/src/main/AndroidManifest.xml:2:98-124
 		INJECTED from /Users/yashvardhannevatia/Desktop/firstProject/platforms/android/app/src/main/AndroidManifest.xml
@@ -117,6 +117,10 @@ uses-permission#android.permission.CAMERA
 ADDED from /Users/yashvardhannevatia/Desktop/firstProject/platforms/android/app/src/main/AndroidManifest.xml:17:5-65
 	android:name
 		ADDED from /Users/yashvardhannevatia/Desktop/firstProject/platforms/android/app/src/main/AndroidManifest.xml:17:22-62
+uses-permission#android.permission.RECORD_AUDIO
+ADDED from /Users/yashvardhannevatia/Desktop/firstProject/platforms/android/app/src/main/AndroidManifest.xml:18:5-71
+	android:name
+		ADDED from /Users/yashvardhannevatia/Desktop/firstProject/platforms/android/app/src/main/AndroidManifest.xml:18:22-68
 meta-data#android.support.VERSION
 ADDED from [com.android.support:exifinterface:25.4.0] /Users/yashvardhannevatia/.gradle/caches/transforms-1/files-1.1/exifinterface-25.4.0.aar/ec949f4c9ee6b870f2a390f9c6fe9699/AndroidManifest.xml:23:9-25:38
 	android:value
