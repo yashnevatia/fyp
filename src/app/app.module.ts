@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { TextToSpeech } from '@ionic-native/text-to-speech/ngx';
 import * as firebase from 'firebase/app';
 
+import { BluetoothSerial } from '@ionic-native/bluetooth-serial/ngx';
 var config = {
     apiKey: "AIzaSyBmLZ6eEQX-A8oLdKwo_oF1RpYLQdSeJIo",
     authDomain: "firstproject-130b3.firebaseapp.com",
@@ -30,6 +31,7 @@ firebase.initializeApp(config);
     StatusBar,
     SplashScreen,
     TextToSpeech,
+    BluetoothSerial,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

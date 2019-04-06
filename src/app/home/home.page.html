@@ -1,40 +1,60 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Home
-    </ion-title>
-  </ion-toolbar>
+  <link href="https://fonts.googleapis.com/css?family=Cairo|Lato|Raleway|Righteous" rel="stylesheet">
+  <ion-toolbar color="base">
+  <ion-buttons slot="secondary">
+    <ion-button href="/start">
+      <ion-icon slot="icon-only" name="home" ></ion-icon>
+    </ion-button>
+  </ion-buttons>
+</ion-toolbar>
+  
 </ion-header>
 
+<ion-content padding color="base">
 
-<ion-content padding>
-    <!-- <ion-grid style="height: 10%">
-        <!-- <ion-row justify-content-center align-items-center style="height: 100%; flex-direction: column">
-            <ion-button href="/exercise">Start Workout</ion-button>
-        </ion-row> -->
-        <!-- <ion-row align-items-center>
-            <ion-button href="/exercise">Start Workout</ion-button>
-        </ion-row> -->
-    <!-- </ion-grid> -->
+      <div class="main_content2">
+        <div class="input_section">
+        <div class="input_div">
+        <h2>Bicep Curl Sets</h2>
+        <ion-input  text-right   type="number" id="input" [(ngModel)]="curl_sets"></ion-input>
+        <!-- <h2>Bicep Curl Sets</h2> -->
+        
+        </div>
 
-    <ion-list>
-    <ion-item>
-        <ion-label stacked>Bicep Curl Sets</ion-label>
-        <ion-input type="number" text-right id="input" [(ngModel)]="curl_sets"></ion-input>
-    </ion-item>
-    <ion-item>
-        <ion-label stacked>Squat Sets</ion-label>
-        <ion-input type="number" text-right id="input" [(ngModel)]="squat_sets"></ion-input>
-    </ion-item>
-    <ion-item>
-        <ion-label stacked>Reps per set</ion-label>
-        <ion-input type="number" text-right id="input" [(ngModel)]="reps_per_set" ></ion-input>
-    </ion-item>
-    <ion-item>
-        <ion-label stacked>Rest between sets (secs)</ion-label>
-        <ion-input type="number" text-right id="input" [(ngModel)]="rest_time"></ion-input>
-    </ion-item>
-    <!-- <ion-button href="/exercise">Start Workout</ion-button> -->
-    <ion-button (click)=go()>Start Workout</ion-button>
-  </ion-list>
+        <div class="input_div">
+        <h2>Front Raise Sets</h2>
+        <ion-input  text-right   type="number" id="input" [(ngModel)]="curl_sets"></ion-input>
+        <!-- <h2>Bicep Curl Sets</h2> -->
+        
+        </div>
+        
+        <div class="input_div">
+        <h2>Squat Sets</h2>
+        <ion-input  text-right   type="number" id="input" [(ngModel)]="curl_sets"></ion-input>
+        <!-- <h2>Bicep Curl Sets</h2> -->
+        
+        </div>
+
+        <div class="input_div">
+        <h2>Weights Used</h2>
+        <ion-input  text-right   type="number" id="input" [(ngModel)]="curl_sets"></ion-input>
+        <!-- <h2>Bicep Curl Sets</h2> -->
+        
+        </div>
+
+        <div class="input_div">
+        <h2>Repetitions</h2>
+        <ion-input  text-right  placeholder="Reps per set" type="number" id="input" [(ngModel)]="reps_per_set" ></ion-input>
+        <!-- <h2>Reps per set</h2> -->
+        </div>
+        <div class="input_div">
+        <h2>Rest Period</h2>
+        <ion-input text-right   placeholder="Rest between sets (secs)" type="number" id="input" [(ngModel)]="rest_time"></ion-input>
+        <!-- <h2>Rest between sets (secs)</h2> -->
+        </div>
+    </div>    
+    <!-- <ion-button (click)=go()>Start Workout</ion-button> -->
+    <ion-button ion-button color="light" (click)=go() block>Start Workout <ion-icon name="flame"></ion-icon></ion-button>
+    <ion-button ion-button color="primary" href="/feedback" block>Load Workout <ion-icon name="save"></ion-icon></ion-button>
+  </div>
 </ion-content>

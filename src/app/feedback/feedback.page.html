@@ -1,15 +1,42 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Feedback</ion-title>
-  </ion-toolbar>
+  <link href="https://fonts.googleapis.com/css?family=Cairo|Lato|Raleway|Righteous" rel="stylesheet">
+  <ion-toolbar color="base">
+  <ion-buttons slot="secondary">
+    <ion-button href="/start">
+      <ion-icon slot="icon-only" name="home" ></ion-icon>
+    </ion-button>
+  </ion-buttons>
+</ion-toolbar>
+  
 </ion-header>
 
-<ion-content padding>
-    <ion-list>
-  <ion-item *ngFor="let item of items">
-    Date: {{ item.date }} <br>
+<ion-content padding color="base">
+    
+  <div class="main_content">
+<ion-card color="dark">
+  <ion-card-header>
+    <ion-card-title>Workout Details</ion-card-title>
+    <ion-card-subtitle>Bicep Curl : {{ latest.bicep }} reps</ion-card-subtitle>
+    <ion-card-subtitle>Front Shoulder Raise : {{ latest.raise }} reps</ion-card-subtitle>
+    <ion-card-content>
+      <canvas #doughnutCanvas></canvas>
+    </ion-card-content>
+  </ion-card-header>
+</ion-card>
+  </div> 
+  <h2> Workout History </h2> 
+  <div *ngFor="let item of items">
+  	<ion-card color="light">
+  <ion-card-header>
+    <ion-card-title>{{ item.dateString }}</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
     Bicep Curl reps: {{ item.bicep }} <br>
     Front Raise reps: {{ item.raise }} <br>
-  </ion-item>
-</ion-list>
+  </ion-card-content>
+</ion-card>
+    <!-- Date: {{ item.date }} <br>
+    Bicep Curl reps: {{ item.bicep }} <br>
+    Front Raise reps: {{ item.raise }} <br> -->
+  </div>
 </ion-content>

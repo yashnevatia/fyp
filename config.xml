@@ -85,5 +85,6 @@
     <plugin name="cordova-plugin-camera-preview" spec="0.10.0" />
     <plugin name="cordova-plugin-speechrecognition" spec="1.2.0" />
     <plugin name="cordova-plugin-tts" spec="0.2.3" />
+    <plugin name="cordova-plugin-bluetooth-serial" spec="0.4.7" />
     <engine name="android" spec="7.1.4" />
 </widget>

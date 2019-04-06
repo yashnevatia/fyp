@@ -4,8 +4,12 @@ import { Injectable } from '@angular/core';
 export class HelperClass {
 
     confidence_threshold: number = 0.5;
-    ratio_threshold: number = 4.6;
+    ratio_threshold: number = 2.8; /*Set this to 4.0 for non-mobile*/
     side: string = "left";
+    public lastRecorded : any;
+    public width : number;
+    public height : number;
+
     constructor(){
 
     }
@@ -188,7 +192,7 @@ export class HelperClass {
         var s2e = this.getDistance(shoulder.position,wrist.position);
         var s2s = this.getDistance(shoulder.position,opshoulder.position);
         var e2w = this.getDistance(elbow.position,wrist.position)
-
+        this.lastRecorded = (shoulder.position.x + opshoulder.position.x)/2;
         if (s2e/s2s > this.ratio_threshold) {
             return true;
         }
@@ -197,6 +201,17 @@ export class HelperClass {
             return flag;
         }
 
+    }
+
+    checkCentral()
+    {
+      var left_boundary = 0.3*this.width;
+      var right_boundary = 0.7*this.width;
+      // console.log(left_boundary,this.lastRecorded,right_boundary);
+      // console.log(left_boundary<this.lastRecorded,this.lastRecorded<right_boundary);
+      if (left_boundary<this.lastRecorded && this.lastRecorded<right_boundary) return "centre";
+      else if(this.lastRecorded>right_boundary) return 'h';
+      else return 'l';
     }
 
 }

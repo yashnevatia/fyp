@@ -8,6 +8,9 @@ import { UtilClass } from '../helper_functions/util';
 import * as firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/database';
+import { BluetoothSerial } from '@ionic-native/bluetooth-serial/ngx';
+import { AlertController, ToastController, Platform } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-exercise',
@@ -23,6 +26,13 @@ export class ExercisePage implements OnInit {
     util: any;
     count: number = 0;
     rep: number;
+
+    // Bluetooth stuff
+    unpairedDevices: any;
+    pairedDevices: any;
+    gettingDevices: Boolean;
+    model: any;
+
 
     // curl variables
     angles: any = [];
@@ -53,9 +63,10 @@ export class ExercisePage implements OnInit {
     //HTMLCanvasElement
     context: any;
 
-    constructor(private router: Router, public activatedRoute: ActivatedRoute) {
+    constructor(private router: Router, public activatedRoute: ActivatedRoute, private bluetoothSerial: BluetoothSerial, private plt: Platform) {
         this.hf = new HelperClass();
         this.util = new UtilClass();
+        bluetoothSerial.enable();
     }
 
     ngOnInit() {
@@ -79,8 +90,11 @@ export class ExercisePage implements OnInit {
     }
 
     async setupCamera() {
-        const videoWidth = 400;
-        const videoHeight = 700;
+        const videoWidth = this.plt.width();
+        const videoHeight = this.plt.height();
+        this.hf.width = videoWidth;
+        this.hf.height = videoHeight;
+        this.hf.lastRecorded = this.hf.width/2;
         navigator.getUserMedia = navigator.getUserMedia;
         if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
             throw new Error(
@@ -114,19 +128,23 @@ export class ExercisePage implements OnInit {
         var canvas = <HTMLCanvasElement>document.getElementById("mainCanvas");
         this.context = canvas.getContext("2d");
         var v = <HTMLVideoElement>document.getElementById('video');
-        canvas.width = v.videoWidth;
-        canvas.height = v.videoHeight;
+        canvas.width = this.plt.width();
+        canvas.height = this.plt.height();
+
     }
 
     setContext(ctx){
-        ctx.clearRect(0, 0, 400, 700)
+        var w = this.plt.width();
+        var h = this.plt.height();
+
+        ctx.clearRect(0, 0, w,h);
         ctx.save();
         ctx.scale(-1, 1);
-        ctx.translate(-400, 0);
-        ctx.drawImage(this.video, 0, 0, 400, 700);
+        ctx.translate(-w, 0);
+        ctx.drawImage(this.video, 0, 0, w, h);
         ctx.restore();
         ctx.font = "50px Comic Sans MS";
-        ctx.fillText(this.rep.toString(), 10, 50);
+        ctx.fillText(this.rep.toString(), w*0.1, 50);
     }
 
     speaker(tospeak){
@@ -236,6 +254,10 @@ export class ExercisePage implements OnInit {
             const pose = await net.estimateSinglePose(video, 0.5, true, 16);
             let parts_to_check = [];
 
+            var dir = me.hf.checkCentral();
+            // console.log("dir",dir);
+            if(dir!="centre") me.turnOn(dir);
+
             if(me.curling){
                 parts_to_check = ["Wrist", "Elbow", "Shoulder"];
             }else{
@@ -261,6 +283,7 @@ export class ExercisePage implements OnInit {
             }
             if (me.correct_orientation<20 && me.correct_position>=20){
                 me.util.drawOrientation(me.context);
+
             }
             if(me.correct_position < 20){
                 me.util.drawPosition(me.context);
@@ -358,5 +381,34 @@ export class ExercisePage implements OnInit {
 
 
     }
+
+
+
+
+    async turnOn(dir){
+    var ctrl = this;
+    await this.bluetoothSerial.write(dir).then(function (success) {
+      console.log(success);
+      // ctrl.model.ledResponse = success;
+    }, function (failure) {
+      console.log(failure);
+      // ctrl.model.ledResponse = failure;
+    });
+    // this.model.val = this.model.val=='h' ? '0':'h';
+  }
+
+  success = (data) => alert(data);
+  fail = (error) => alert(error);
+
+  turnOff(){
+    var ctrl = this;
+    this.bluetoothSerial.write('0').then(function (success) {
+      console.log(success);
+      ctrl.model.ledResponse = success;
+    }, function (failure) {
+      console.log(failure);
+      ctrl.model.ledResponse = failure;
+    });
+  }
 
 }

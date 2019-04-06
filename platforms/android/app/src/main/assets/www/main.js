@@ -2873,6 +2873,12 @@ for (var collections = getKeys(DOMIterables), i = 0; i < collections.length; i++
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
+	"./data/data.module": [
+		"./src/app/data/data.module.ts",
+		"default~data-data-module~feedback-feedback-module",
+		"common",
+		"data-data-module"
+	],
 	"./exercise/exercise.module": [
 		"./src/app/exercise/exercise.module.ts",
 		"default~exercise-exercise-module~feedback-feedback-module~login-login-module",
@@ -2883,6 +2889,7 @@ var map = {
 	"./feedback/feedback.module": [
 		"./src/app/feedback/feedback.module.ts",
 		"default~exercise-exercise-module~feedback-feedback-module~login-login-module",
+		"default~data-data-module~feedback-feedback-module",
 		"default~exercise-exercise-module~feedback-feedback-module",
 		"common",
 		"feedback-feedback-module"
@@ -2896,6 +2903,10 @@ var map = {
 		"default~exercise-exercise-module~feedback-feedback-module~login-login-module",
 		"common",
 		"login-login-module"
+	],
+	"./start/start.module": [
+		"./src/app/start/start.module.ts",
+		"start-start-module"
 	]
 };
 function webpackAsyncContext(req) {
@@ -2937,11 +2948,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var routes = [
-    { path: '', redirectTo: 'home', pathMatch: 'full' },
+    { path: '', redirectTo: 'start', pathMatch: 'full' },
     { path: 'home', loadChildren: './home/home.module#HomePageModule' },
     { path: 'feedback', loadChildren: './feedback/feedback.module#FeedbackPageModule' },
     { path: 'exercise', loadChildren: './exercise/exercise.module#ExercisePageModule' },
     { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
+    { path: 'start', loadChildren: './start/start.module#StartPageModule' },
+    { path: 'data', loadChildren: './data/data.module#DataPageModule' },
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -3040,10 +3053,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic-native/status-bar/ngx */ "./node_modules/@ionic-native/status-bar/ngx/index.js");
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
 /* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _ionic_native_speech_recognition_ngx__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @ionic-native/speech-recognition/ngx */ "./node_modules/@ionic-native/speech-recognition/ngx/index.js");
-/* harmony import */ var _ionic_native_text_to_speech_ngx__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @ionic-native/text-to-speech/ngx */ "./node_modules/@ionic-native/text-to-speech/ngx/index.js");
-/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! firebase/app */ "./node_modules/firebase/app/dist/index.cjs.js");
-/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(firebase_app__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _ionic_native_text_to_speech_ngx__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @ionic-native/text-to-speech/ngx */ "./node_modules/@ionic-native/text-to-speech/ngx/index.js");
+/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! firebase/app */ "./node_modules/firebase/app/dist/index.cjs.js");
+/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(firebase_app__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _ionic_native_bluetooth_serial_ngx__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @ionic-native/bluetooth-serial/ngx */ "./node_modules/@ionic-native/bluetooth-serial/ngx/index.js");
 
 
 
@@ -3065,7 +3078,7 @@ var config = {
     storageBucket: "firstproject-130b3.appspot.com",
     messagingSenderId: "146118107158"
 };
-firebase_app__WEBPACK_IMPORTED_MODULE_11__["initializeApp"](config);
+firebase_app__WEBPACK_IMPORTED_MODULE_10__["initializeApp"](config);
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -3077,8 +3090,8 @@ var AppModule = /** @class */ (function () {
             providers: [
                 _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"],
                 _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"],
-                _ionic_native_speech_recognition_ngx__WEBPACK_IMPORTED_MODULE_9__["SpeechRecognition"],
-                _ionic_native_text_to_speech_ngx__WEBPACK_IMPORTED_MODULE_10__["TextToSpeech"],
+                _ionic_native_text_to_speech_ngx__WEBPACK_IMPORTED_MODULE_9__["TextToSpeech"],
+                _ionic_native_bluetooth_serial_ngx__WEBPACK_IMPORTED_MODULE_11__["BluetoothSerial"],
                 { provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"] }
             ],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
@@ -3152,7 +3165,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/yashvardhannevatia/Desktop/firstProject/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /Users/vishnuchopra/Project/fyp/src/main.ts */"./src/main.ts");
 
 
 /***/ })

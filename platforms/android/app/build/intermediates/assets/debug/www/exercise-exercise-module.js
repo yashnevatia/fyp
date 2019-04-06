@@ -1051,7 +1051,7 @@ var ExercisePageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-title>Workout</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<!-- <ion-content padding>\n\n</ion-content> -->\n\n<!-- <ion-content overflow-scroll=\"true\">\n  <video id=\"video\" ontrols=\"controls\" preload=\"metadata\" autoplay=\"autoplay\" webkit-playsinline=\"webkit-playsinline\" class=\"videoPlayer\">\n   <source  type=\"video/mp4\" />\n  </video>\n  <h2>{{rep}}</h2>\n  <h1 style=\"color:red\"*ngIf=\"elbow\">CHECK ELBOW ANGLE.</h1>\n  <ion-button href=\"/feedback\">Feedback</ion-button>\n  <ion-button (click)=\"go()\">Go</ion-button>\n</ion-content> -->\n\n\n<ion-content padding>\n  <ion-grid style=\"height: 100%\">\n      <ion-row justify-content-center align-items-center style=\"height: 100%; flex-direction: column\">\n          <video id=\"video\" controls=\"controls\" preload=\"metadata\" autoplay=\"autoplay\" webkit-playsinline=\"webkit-playsinline\" class=\"videoPlayer\">\n           <source  type=\"video/mp4\" />\n          </video>\n          <h2 *ngIf=\"!rest\">{{rep}}</h2>\n          <h2 *ngIf=\"rest\">REST</h2>\n          <h1 style=\"color:red\" *ngIf=\"elbow && !rest\">CHECK ELBOW ANGLE.</h1>\n          <h1 style=\"color:red\"*ngIf=\"correct_orientation<20 && correct_position>=20\">PLEASE GET INTO THE CORRECT ORIENTATION</h1>\n          <h1 style=\"color:red\"*ngIf=\"correct_position<20\">PLEASE GET INTO THE CORRECT POSITION</h1>\n          <ion-button href=\"/exercise\">Next Exercise</ion-button>\n          <ion-button href=\"/feedback\">End Workout</ion-button>\n        </ion-row>\n  </ion-grid>\n</ion-content>\n"
+module.exports = " <link href=\"https://fonts.googleapis.com/css?family=Cairo|Lato|Raleway|Righteous\" rel=\"stylesheet\">\n\n\n<div class=\"video-container\">\n  <video id=\"video\" controls=\"controls\" preload=\"metadata\" autoplay=\"autoplay\" webkit-playsinline=\"webkit-playsinline\" class=\"videoPlayer\">\n    <source type=\"video/mp4\" />\n  </video>\n<!--   <div class=\"video-filter\" id=\"yellow_filter\" style=\"background-color: rgba(234, 224, 37,.5)\"></div>\n  <div class=\"video-filter\" id=\"red_filter\" style=\"background-color: rgba(196, 49, 33,.5)\"></div> -->\n</div>\n<canvas id=\"mainCanvas\">\n</canvas>"
 
 /***/ }),
 
@@ -1062,7 +1062,7 @@ module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-title>Workout</ion-tit
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "ion-title {\n  position: absolute;\n  top: 0;\n  left: 0;\n  padding: 0 90px 1px;\n  width: 100%;\n  height: 100%;\n  text-align: center; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy95YXNodmFyZGhhbm5ldmF0aWEvRGVza3RvcC9maXJzdFByb2plY3Qvc3JjL2FwcC9leGVyY2lzZS9leGVyY2lzZS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxrQkFBa0I7RUFDbEIsTUFBTTtFQUNOLE9BQU87RUFDUCxtQkFBbUI7RUFDbkIsV0FBVztFQUNYLFlBQVk7RUFDWixrQkFBa0IsRUFBQSIsImZpbGUiOiJzcmMvYXBwL2V4ZXJjaXNlL2V4ZXJjaXNlLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi10aXRsZSB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgdG9wOiAwO1xuICBsZWZ0OiAwO1xuICBwYWRkaW5nOiAwIDkwcHggMXB4O1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiAxMDAlO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG59XG4iXX0= */"
+module.exports = "ion-title {\n  position: absolute;\n  top: 0;\n  left: 0;\n  padding: 0 90px 1px;\n  width: 100%;\n  height: 100%;\n  text-align: center; }\n\n.video-container {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  width: 100%;\n  height: 100%;\n  overflow: hidden;\n  box-shadow: 0 0 100px 0 rgba(255, 255, 255, 0.3); }\n\n.video-container .video-filter {\n  position: absolute;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  z-index: 9999;\n  pointer-events: none;\n  /*Unofficial and Won't Validate*/ }\n\n.video-container .video-filter-controls .yellow {\n  background-color: #FFFF00; }\n\n.video-container .video-filter-controls .red {\n  background-color: #FF0000; }\n\n.video-container video {\n  /* Make video to at least 100% wide and tall */\n  min-width: 100%;\n  min-height: 100%;\n  /* Setting width & height to auto prevents the browser from stretching or squishing the video */\n  width: auto;\n  height: auto;\n  /* Center the video */\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n  z-index: 1; }\n\ncanvas {\n  z-index: 20; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy92aXNobnVjaG9wcmEvUHJvamVjdC9meXAvc3JjL2FwcC9leGVyY2lzZS9leGVyY2lzZS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxrQkFBa0I7RUFDbEIsTUFBTTtFQUNOLE9BQU87RUFDUCxtQkFBbUI7RUFDbkIsV0FBVztFQUNYLFlBQVk7RUFDWixrQkFBa0IsRUFBQTs7QUFJcEI7RUFDRSxrQkFBa0I7RUFDbEIsTUFBTTtFQUNOLFNBQVM7RUFDVCxXQUFXO0VBQ1gsWUFBWTtFQUNaLGdCQUFnQjtFQUdsQixnREFBNEMsRUFBQTs7QUFHNUM7RUFDQSxrQkFBa0I7RUFDbEIsTUFBTTtFQUNOLFdBQVc7RUFDWCxZQUFZO0VBQ1osYUFBYTtFQUNiLG9CQUFvQjtFQUFFLGdDQUFBLEVBQWlDOztBQU12RDtFQUNBLHlCQUF5QixFQUFBOztBQUd6QjtFQUNBLHlCQUF5QixFQUFBOztBQUl6QjtFQUNFLDhDQUFBO0VBQ0EsZUFBZTtFQUNmLGdCQUFnQjtFQUVoQiwrRkFBQTtFQUNBLFdBQVc7RUFDWCxZQUFZO0VBRVoscUJBQUE7RUFDQSxrQkFBa0I7RUFDbEIsUUFBUTtFQUNSLFNBQVM7RUFDVCx3Q0FBK0I7VUFBL0IsZ0NBQStCO0VBQy9CLFVBQVUsRUFBQTs7QUFHWjtFQUNJLFdBQVcsRUFBQSIsImZpbGUiOiJzcmMvYXBwL2V4ZXJjaXNlL2V4ZXJjaXNlLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi10aXRsZSB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgdG9wOiAwO1xuICBsZWZ0OiAwO1xuICBwYWRkaW5nOiAwIDkwcHggMXB4O1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiAxMDAlO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG59XG5cblxuLnZpZGVvLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgdG9wOiAwO1xuICBib3R0b206IDA7XG4gIHdpZHRoOiAxMDAlO1xuICBoZWlnaHQ6IDEwMCU7XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIC13ZWJraXQtYm94LXNoYWRvdzogMCAwIDEwMHB4IDAgcmdiYSgyNTUsMjU1LDI1NSwuMyk7XG4tbW96LWJveC1zaGFkb3c6IDAgMCAxMDBweCAwIHJnYmEoMjU1LDI1NSwyNTUsLjMpO1xuYm94LXNoYWRvdzogMCAwIDEwMHB4IDAgcmdiYSgyNTUsMjU1LDI1NSwuMyk7XG59XG5cbi52aWRlby1jb250YWluZXIgLnZpZGVvLWZpbHRlciB7XG5wb3NpdGlvbjogYWJzb2x1dGU7XG50b3A6IDA7XG53aWR0aDogMTAwJTtcbmhlaWdodDogMTAwJTtcbnotaW5kZXg6IDk5OTk7XG5wb2ludGVyLWV2ZW50czogbm9uZTsgLypVbm9mZmljaWFsIGFuZCBXb24ndCBWYWxpZGF0ZSovXG5cbn1cblxuXG5cbi52aWRlby1jb250YWluZXIgLnZpZGVvLWZpbHRlci1jb250cm9scyAueWVsbG93IHtcbmJhY2tncm91bmQtY29sb3I6ICNGRkZGMDA7XG59XG5cbi52aWRlby1jb250YWluZXIgLnZpZGVvLWZpbHRlci1jb250cm9scyAucmVkIHtcbmJhY2tncm91bmQtY29sb3I6ICNGRjAwMDA7XG59XG5cblxuLnZpZGVvLWNvbnRhaW5lciB2aWRlbyB7XG4gIC8qIE1ha2UgdmlkZW8gdG8gYXQgbGVhc3QgMTAwJSB3aWRlIGFuZCB0YWxsICovXG4gIG1pbi13aWR0aDogMTAwJTtcbiAgbWluLWhlaWdodDogMTAwJTtcblxuICAvKiBTZXR0aW5nIHdpZHRoICYgaGVpZ2h0IHRvIGF1dG8gcHJldmVudHMgdGhlIGJyb3dzZXIgZnJvbSBzdHJldGNoaW5nIG9yIHNxdWlzaGluZyB0aGUgdmlkZW8gKi9cbiAgd2lkdGg6IGF1dG87XG4gIGhlaWdodDogYXV0bztcblxuICAvKiBDZW50ZXIgdGhlIHZpZGVvICovXG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgdG9wOiA1MCU7XG4gIGxlZnQ6IDUwJTtcbiAgdHJhbnNmb3JtOiB0cmFuc2xhdGUoLTUwJSwtNTAlKTtcbiAgei1pbmRleDogMTtcbn1cblxuY2FudmFzIHtcbiAgICB6LWluZGV4OiAyMDtcbn1cbiJdfQ== */"
 
 /***/ }),
 
@@ -1080,14 +1080,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _tensorflow_models_posenet__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tensorflow-models/posenet */ "./node_modules/@tensorflow-models/posenet/dist/posenet.esm.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _ionic_native_text_to_speech_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/text-to-speech/ngx */ "./node_modules/@ionic-native/text-to-speech/ngx/index.js");
-/* harmony import */ var _helper_functions_helper_functions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../helper_functions/helper_functions */ "./src/app/helper_functions/helper_functions.ts");
+/* harmony import */ var _helper_functions_helper_functions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../helper_functions/helper_functions */ "./src/app/helper_functions/helper_functions.ts");
+/* harmony import */ var _helper_functions_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../helper_functions/util */ "./src/app/helper_functions/util.ts");
 /* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! firebase/app */ "./node_modules/firebase/app/dist/index.cjs.js");
 /* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(firebase_app__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var firebase_firestore__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! firebase/firestore */ "./node_modules/firebase/firestore/dist/index.esm.js");
 /* harmony import */ var firebase_database__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! firebase/database */ "./node_modules/firebase/database/dist/index.esm.js");
+/* harmony import */ var _ionic_native_bluetooth_serial_ngx__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @ionic-native/bluetooth-serial/ngx */ "./node_modules/@ionic-native/bluetooth-serial/ngx/index.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
 
 
+
+
+// import { TextToSpeech } from '@ionic-native/text-to-speech/ngx';
 
 
 
@@ -1096,99 +1101,63 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ExercisePage = /** @class */ (function () {
-    function ExercisePage(router, activatedRoute, tts) {
+    function ExercisePage(router, activatedRoute, bluetoothSerial, plt) {
         this.router = router;
         this.activatedRoute = activatedRoute;
-        this.tts = tts;
+        this.bluetoothSerial = bluetoothSerial;
+        this.plt = plt;
         this.state = 1;
-        this.elbow = false; // elbow error flag.
         this.count = 0;
+        // curl variables
+        this.angles = [];
+        this.elbow = false;
+        this.curling = true;
         // exercise variables
         this.curl_sets = 5;
-        this.raise_sets = 0;
+        this.squat_sets = 0;
         this.reps_per_set = 5;
         this.rest_time = 10;
         this.rest = false;
         this.set_count = 0;
         // orientation variables
-        this.orientation_count = 0;
+        this.wrong_orientation_count = 0;
         this.correct_orientation = 0;
-        this.position_count = 0;
+        this.wrong_position_count = 0;
         this.correct_position = 0;
-        this.confidence_threshold = 0.5;
-        this.ratio_threshold = 4.6;
-        this.started = false;
-        this.angles = [];
-        this.hf = new _helper_functions_helper_functions__WEBPACK_IMPORTED_MODULE_5__["HelperClass"]();
+        // squat variables
+        this.top_position = -1;
+        this.bottom_position = -1;
+        this.shoulder_middle = -1;
+        this.shoulder = false;
+        this.success = function (data) { return alert(data); };
+        this.fail = function (error) { return alert(error); };
+        this.hf = new _helper_functions_helper_functions__WEBPACK_IMPORTED_MODULE_4__["HelperClass"]();
+        this.util = new _helper_functions_util__WEBPACK_IMPORTED_MODULE_5__["UtilClass"]();
+        bluetoothSerial.enable();
     }
     ExercisePage.prototype.ngOnInit = function () {
         var _this = this;
         this.activatedRoute.queryParams.subscribe(function (p) {
             if (p['curl_sets'])
                 _this.curl_sets = parseInt(p['curl_sets']);
-            if (p['raise_sets'])
-                _this.raise_sets = parseInt(p['raise_sets']);
+            if (p['squat_sets'])
+                _this.squat_sets = parseInt(p['squat_sets']);
             if (p['reps_per_set'])
                 _this.reps_per_set = parseInt(p['reps_per_set']);
             if (p['rest_time'])
                 _this.rest_time = parseInt(p['rest_time']);
         });
-        console.log(this.curl_sets, this.raise_sets, this.reps_per_set, this.rest_time);
+        console.log(this.curl_sets, this.squat_sets, this.reps_per_set, this.rest_time);
         // this.speaker(`Your workout is going to start in ${this.rest_time} seconds.`);
         if (this.curl_sets > 0) {
             setTimeout(this.startWorkout.bind(this), this.rest_time * 1000, 'CURL');
+            this.curling = true;
         }
         else {
-            setTimeout(this.startWorkout.bind(this), this.rest_time * 1000, 'RAISE');
+            setTimeout(this.startWorkout.bind(this), this.rest_time * 1000, 'SQUAT');
+            this.curling = false;
         }
         this.loadVideo();
-    };
-    ExercisePage.prototype.speaker = function (tospeak) {
-        console.log(tospeak);
-        this.tts.speak(tospeak)
-            .then(function () { return console.log('Success'); })
-            .catch(function (reason) { return console.log(reason); });
-    };
-    ExercisePage.prototype.helper = function () {
-        var _this = this;
-        if (this.rep >= this.reps_per_set) {
-            clearInterval(this.interval);
-            if (this.set_count < this.curl_sets) {
-                setTimeout(this.startWorkout.bind(this), this.rest_time * 1000, 'CURL');
-                this.speaker("Well done. Rest for " + this.rest_time + " now.");
-                console.log("started rest");
-                this.rest = true;
-            }
-            else if (this.set_count < this.curl_sets + this.raise_sets) {
-                setTimeout(this.startWorkout.bind(this), this.rest_time * 1000, 'RAISE');
-                this.speaker("Well done. Rest for " + this.rest_time + " now.");
-                console.log("started rest");
-                this.rest = true;
-            }
-            else {
-                console.log("WORKOUT DONE");
-                this.speaker("Well done. Your workout is now over.");
-                firebase_app__WEBPACK_IMPORTED_MODULE_6__["firestore"]().collection("workouts").add({
-                    curl: this.curl_sets,
-                    raise: this.raise_sets,
-                    date: new Date().toString()
-                }).then(function (doc) { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
-                    return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                        console.log("workout saved");
-                        return [2 /*return*/];
-                    });
-                }); });
-            }
-        }
-    };
-    ExercisePage.prototype.startWorkout = function (temp) {
-        this.set_count += 1;
-        var val = temp === 'CURL' ? this.set_count : this.set_count - this.curl_sets;
-        console.log("NEW SET", temp, val);
-        this.speaker("starting " + temp + " set number " + val + " in 3 2 1.");
-        this.rep = 0;
-        this.rest = false;
-        this.interval = setInterval(this.helper.bind(this), 1000);
     };
     ExercisePage.prototype.setupCamera = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
@@ -1196,8 +1165,11 @@ var ExercisePage = /** @class */ (function () {
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        videoWidth = 300;
-                        videoHeight = 300;
+                        videoWidth = this.plt.width();
+                        videoHeight = this.plt.height();
+                        this.hf.width = videoWidth;
+                        this.hf.height = videoHeight;
+                        this.hf.lastRecorded = this.hf.width / 2;
                         navigator.getUserMedia = navigator.getUserMedia;
                         if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
                             throw new Error('Browser API navigator.mediaDevices.getUserMedia not available');
@@ -1226,131 +1198,79 @@ var ExercisePage = /** @class */ (function () {
             });
         });
     };
-    ExercisePage.prototype.checkConfidence = function (sidePoints) {
-        for (var i = sidePoints.length - 1; i >= 0; i--) {
-            if (sidePoints[i] < this.confidence_threshold)
-                return false;
-        }
-        return true;
+    ExercisePage.prototype.setUpCanvas = function () {
+        var canvas = document.getElementById("mainCanvas");
+        this.context = canvas.getContext("2d");
+        var v = document.getElementById('video');
+        canvas.width = this.plt.width();
+        canvas.height = this.plt.height();
     };
-    ExercisePage.prototype.checkPosition = function (points, keypoints) {
-        var sides = ['left', 'right'];
-        var sidePoints = {
-            "left": [], "right": []
-        };
-        var _loop_1 = function (i) {
-            var _loop_2 = function (j) {
-                var confidence = keypoints.find(function (obj) {
-                    return obj.part === sides[i] + points[j];
-                }).score;
-                sidePoints[sides[i]].push(confidence);
-            };
-            for (var j = points.length - 1; j >= 0; j--) {
-                _loop_2(j);
+    ExercisePage.prototype.setContext = function (ctx) {
+        var w = this.plt.width();
+        var h = this.plt.height();
+        ctx.clearRect(0, 0, w, h);
+        ctx.save();
+        ctx.scale(-1, 1);
+        ctx.translate(-w, 0);
+        ctx.drawImage(this.video, 0, 0, w, h);
+        ctx.restore();
+        ctx.font = "50px Comic Sans MS";
+        ctx.fillText(this.rep.toString(), w * 0.1, 50);
+    };
+    ExercisePage.prototype.speaker = function (tospeak) {
+        //     console.log(tospeak);
+        //     this.tts.speak(tospeak)
+        //     .then(() => console.log('Success'))
+        //     .catch((reason: any) => console.log(reason));
+    };
+    ExercisePage.prototype.helper = function () {
+        var _this = this;
+        if (this.rep >= this.reps_per_set) {
+            clearInterval(this.interval);
+            if (this.set_count < this.curl_sets) {
+                setTimeout(this.startWorkout.bind(this), this.rest_time * 1000, 'CURL');
+                this.speaker("Well done. Rest for " + this.rest_time + " now.");
+                console.log("started rest");
+                this.rest = true;
             }
-        };
-        for (var i = sides.length - 1; i >= 0; i--) {
-            _loop_1(i);
-        }
-        return this.checkConfidence(sidePoints["left"]) || this.checkConfidence(sidePoints["right"]);
-    };
-    ExercisePage.prototype.checkOrientationSideBicep = function (keypoints) {
-        var side = this.hf.getSide(keypoints) ? "right" : "left";
-        // console.log(side);
-        var opside = side == "right" ? "left" : "right";
-        var wrist = keypoints.find(function (obj) {
-            return obj.part === side + "Wrist";
-        });
-        var elbow = keypoints.find(function (obj) {
-            return obj.part === side + "Elbow";
-        });
-        var shoulder = keypoints.find(function (obj) {
-            return obj.part === side + "Shoulder";
-        });
-        var opshoulder = keypoints.find(function (obj) {
-            return obj.part === opside + "Shoulder";
-        });
-        var s2e = this.hf.getDistance(shoulder.position, wrist.position);
-        var s2s = this.hf.getDistance(shoulder.position, opshoulder.position);
-        var e2w = this.hf.getDistance(elbow.position, wrist.position);
-        if (s2e / s2s > this.ratio_threshold) {
-            return true;
-        }
-        else {
-            var flag = this.hf.getAngle(1, keypoints) < 90;
-            return flag;
-        }
-    };
-    ExercisePage.prototype.checkPositionOrientation = function (keypoints) {
-        if (!this.checkPosition(["Wrist", "Elbow", "Shoulder"], keypoints)) {
-            this.position_count += 1;
-            if (this.position_count > 10) {
-                this.correct_position = 0;
-                console.log("wrong position");
-                this.position_count = 0;
-            }
-            return false;
-        }
-        else {
-            this.correct_position += 1;
-            this.position_count = 0;
-            if (this.checkOrientationSideBicep(keypoints)) {
-                this.orientation_count = 0;
-                return true;
+            else if (this.set_count < this.curl_sets + this.squat_sets) {
+                setTimeout(this.startWorkout.bind(this), this.rest_time * 1000, 'SQUAT');
+                this.speaker("Well done. Rest for " + this.rest_time + " now.");
+                console.log("started rest");
+                this.rest = true;
             }
             else {
-                this.orientation_count += 1;
-                this.correct_orientation -= 1;
-                if (this.orientation_count > 20) {
-                    console.log("WRONG");
-                    this.state = 1;
-                    this.correct_orientation = 0;
-                    this.orientation_count = 0;
-                }
-                return false;
+                console.log("WORKOUT DONE");
+                this.speaker("Well done. Your workout is now over.");
+                firebase_app__WEBPACK_IMPORTED_MODULE_6__["firestore"]().collection("workouts").add({
+                    curl: this.curl_sets,
+                    raise: this.squat_sets,
+                    date: new Date().toString()
+                }).then(function (doc) { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
+                    return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                        console.log("workout saved");
+                        return [2 /*return*/];
+                    });
+                }); });
             }
         }
     };
-    ExercisePage.prototype.poses = function (video) {
-        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-            function poseDetectionFrame() {
-                return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-                    var pose, check;
-                    return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                        switch (_a.label) {
-                            case 0: return [4 /*yield*/, net.estimateSinglePose(video, 0.5, true, 16)];
-                            case 1:
-                                pose = _a.sent();
-                                check = me.checkPositionOrientation(pose.keypoints);
-                                if (check) {
-                                    if (me.correct_orientation > 20) {
-                                        me.main_function(pose.keypoints);
-                                    }
-                                    else {
-                                        me.correct_orientation += 1;
-                                    }
-                                }
-                                me.main_function(pose.keypoints);
-                                requestAnimationFrame(poseDetectionFrame);
-                                return [2 /*return*/];
-                        }
-                    });
-                });
-            }
-            var me, net;
-            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        me = this;
-                        console.log("entered poses");
-                        return [4 /*yield*/, _tensorflow_models_posenet__WEBPACK_IMPORTED_MODULE_2__["load"](0.75)];
-                    case 1:
-                        net = _a.sent();
-                        poseDetectionFrame();
-                        return [2 /*return*/];
-                }
-            });
-        });
+    ExercisePage.prototype.startWorkout = function (exercise_name) {
+        this.set_count += 1;
+        var val = 0;
+        if (exercise_name === 'CURL' || exercise_name === '') {
+            val = this.set_count;
+            this.curling = true;
+        }
+        else {
+            val = this.set_count - this.curl_sets;
+            this.curling = false;
+        }
+        console.log("NEW SET", exercise_name, val);
+        this.speaker("starting " + exercise_name + " set number " + val + " in 3 2 1.");
+        this.rep = 0;
+        this.rest = false;
+        this.interval = setInterval(this.helper.bind(this), 1000);
     };
     ExercisePage.prototype.loadVideo = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
@@ -1363,7 +1283,8 @@ var ExercisePage = /** @class */ (function () {
                         return [4 /*yield*/, this.setupCamera()];
                     case 1:
                         _a.video = _b.sent();
-                        this.video.play();
+                        // this.video.play();
+                        this.setUpCanvas();
                         console.log('reached here loadVideo 1');
                         this.poses(this.video);
                         return [2 /*return*/];
@@ -1371,11 +1292,150 @@ var ExercisePage = /** @class */ (function () {
             });
         });
     };
-    ExercisePage.prototype.main_function = function (keypoints) {
+    ExercisePage.prototype.go = function () {
+        this.router.navigate(['feedback']);
+    };
+    ExercisePage.prototype.checkPositionOrientation = function (keypoints, parts_to_check) {
+        if (!this.hf.checkPosition(parts_to_check, keypoints)) {
+            this.wrong_position_count += 1;
+            if (this.wrong_position_count > 10) {
+                this.correct_position = 0;
+                this.wrong_position_count = 0;
+            }
+            return false;
+        }
+        else {
+            this.correct_position += 1;
+            this.wrong_position_count = 0;
+            if (this.hf.checkOrientation(keypoints)) {
+                this.wrong_orientation_count = 0;
+                return true;
+            }
+            else {
+                this.wrong_orientation_count += 1;
+                this.correct_orientation -= 1;
+                if (this.wrong_orientation_count > 20) {
+                    console.log("WRONG");
+                    this.state = 1;
+                    this.correct_orientation = 0;
+                    this.wrong_orientation_count = 0;
+                }
+                return false;
+            }
+        }
+    };
+    ExercisePage.prototype.poses = function (video) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            function poseDetectionFrame() {
+                return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+                    var pose, parts_to_check, dir, check;
+                    return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, net.estimateSinglePose(video, 0.5, true, 16)];
+                            case 1:
+                                pose = _a.sent();
+                                parts_to_check = [];
+                                dir = me.hf.checkCentral();
+                                // console.log("dir",dir);
+                                if (dir != "centre")
+                                    me.turnOn(dir);
+                                if (me.curling) {
+                                    parts_to_check = ["Wrist", "Elbow", "Shoulder"];
+                                }
+                                else {
+                                    parts_to_check = ["Shoulder", "Hip", "Knee"];
+                                }
+                                check = me.checkPositionOrientation(pose.keypoints, parts_to_check);
+                                me.setContext(me.context);
+                                if (check) {
+                                    if (me.correct_orientation > 20) {
+                                        me.util.drawKeypoints(pose.keypoints, me.context);
+                                        me.util.drawSkeleton(pose.keypoints, me.context);
+                                        if (me.curling) {
+                                            me.main_function_bicep(pose.keypoints);
+                                        }
+                                        else {
+                                            me.main_function_squat(pose.keypoints);
+                                        }
+                                    }
+                                    else {
+                                        me.correct_orientation += 1;
+                                    }
+                                }
+                                if (me.correct_orientation < 20 && me.correct_position >= 20) {
+                                    me.util.drawOrientation(me.context);
+                                }
+                                if (me.correct_position < 20) {
+                                    me.util.drawPosition(me.context);
+                                }
+                                requestAnimationFrame(poseDetectionFrame);
+                                return [2 /*return*/];
+                        }
+                    });
+                });
+            }
+            var me, net;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        me = this;
+                        return [4 /*yield*/, _tensorflow_models_posenet__WEBPACK_IMPORTED_MODULE_2__["load"](0.75)];
+                    case 1:
+                        net = _a.sent();
+                        poseDetectionFrame();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    ExercisePage.prototype.main_function_squat = function (keypoints) {
+        var me = this;
+        var body_angle = me.hf.getAngleSqaut(1, keypoints);
+        if (175 < body_angle && body_angle < 180) {
+            me.top_position = me.hf.getPos(1, keypoints);
+            me.bottom_position = me.hf.getPos(2, keypoints);
+            me.shoulder_middle = me.hf.getPos(3, keypoints);
+        }
+        var hip_position = this.hf.getPos(1, keypoints);
+        var knee_position = this.hf.getPos(2, keypoints);
+        var mid_position = (this.top_position + this.bottom_position) / 2;
+        if (hip_position !== -1 && knee_position != -1) {
+            if (this.state === 1 && hip_position > mid_position) {
+                this.state = 2;
+            }
+            else if (this.state === 2 && hip_position + 5 > this.bottom_position) {
+                this.state = 3;
+            }
+            else if (this.state === 3 && hip_position <= this.top_position + 5) {
+                this.rep += 1;
+                console.log("REP", this.rep);
+                this.state = 1;
+            }
+        }
+        var shoulder_position = this.hf.getPos(3, keypoints);
+        if (shoulder_position !== -1) {
+            var movement = Math.abs(shoulder_position - this.shoulder_middle);
+            if (movement > 30) {
+                // console.log(shoulder_position, this.shoulder_middle)
+                this.shoulder = true;
+                this.count += 1;
+                if (this.count > 50) {
+                    // console.log("SAY BACK BENDING")
+                    // this.tts.speak('Elbow error')
+                    //   .then(() => console.log('Success'))
+                    //   .catch((reason: any) => console.log(reason));
+                    this.count = 0;
+                }
+            }
+            else {
+                this.shoulder = false;
+                this.count = 0;
+            }
+        }
+    };
+    ExercisePage.prototype.main_function_bicep = function (keypoints) {
         var bicep_angle = this.hf.getAngle(1, keypoints);
         var elbow_angle = this.hf.getAngle(2, keypoints);
-        // console.log("bicep_angle", bicep_angle)
-        // console.log("elbow_angle", elbow_angle)
         if (bicep_angle !== -1) {
             if (this.state === 1 && bicep_angle < 90) {
                 this.state = 2;
@@ -1407,8 +1467,36 @@ var ExercisePage = /** @class */ (function () {
             }
         }
     };
-    ExercisePage.prototype.go = function () {
-        this.router.navigate(['feedback']);
+    ExercisePage.prototype.turnOn = function (dir) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var ctrl;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        ctrl = this;
+                        return [4 /*yield*/, this.bluetoothSerial.write(dir).then(function (success) {
+                                console.log(success);
+                                // ctrl.model.ledResponse = success;
+                            }, function (failure) {
+                                console.log(failure);
+                                // ctrl.model.ledResponse = failure;
+                            })];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    ExercisePage.prototype.turnOff = function () {
+        var ctrl = this;
+        this.bluetoothSerial.write('0').then(function (success) {
+            console.log(success);
+            ctrl.model.ledResponse = success;
+        }, function (failure) {
+            console.log(failure);
+            ctrl.model.ledResponse = failure;
+        });
     };
     ExercisePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1416,7 +1504,7 @@ var ExercisePage = /** @class */ (function () {
             template: __webpack_require__(/*! ./exercise.page.html */ "./src/app/exercise/exercise.page.html"),
             styles: [__webpack_require__(/*! ./exercise.page.scss */ "./src/app/exercise/exercise.page.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"], _ionic_native_text_to_speech_ngx__WEBPACK_IMPORTED_MODULE_4__["TextToSpeech"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"], _ionic_native_bluetooth_serial_ngx__WEBPACK_IMPORTED_MODULE_9__["BluetoothSerial"], _ionic_angular__WEBPACK_IMPORTED_MODULE_10__["Platform"]])
     ], ExercisePage);
     return ExercisePage;
 }());
@@ -1441,15 +1529,13 @@ __webpack_require__.r(__webpack_exports__);
 
 var HelperClass = /** @class */ (function () {
     function HelperClass() {
+        this.confidence_threshold = 0.5;
+        this.ratio_threshold = 2.8; /*Set this to 4.0 for non-mobile*/
+        this.side = "left";
     }
-    HelperClass.prototype.isAndroid = function () {
-        return /Android/i.test(navigator.userAgent);
-    };
-    HelperClass.prototype.isiOS = function () {
-        return /iPhone|iPad|iPod/i.test(navigator.userAgent);
-    };
     HelperClass.prototype.isMobile = function () {
-        return this.isAndroid() || this.isiOS();
+        return /Android/i.test(navigator.userAgent) ||
+            /iPhone|iPad|iPod/i.test(navigator.userAgent);
     };
     HelperClass.prototype.getDistance = function (A, B) {
         var a = A.x - B.x;
@@ -1473,19 +1559,19 @@ var HelperClass = /** @class */ (function () {
         var f3 = 0;
         var f4 = 0;
         for (var j = 0; j < keypoints.length; j++) {
-            if (keypoints[j].part === 'leftWrist' && keypoints[j].score > 0.3) {
+            if (keypoints[j].part === this.side + 'Wrist' && keypoints[j].score > 0.3) {
                 f1 = 1;
                 lw = keypoints[j];
             }
-            else if (keypoints[j].part === 'leftShoulder' && keypoints[j].score > 0.3) {
+            else if (keypoints[j].part === this.side + 'Shoulder' && keypoints[j].score > 0.3) {
                 f2 = 1;
                 ls = keypoints[j];
             }
-            else if (keypoints[j].part === 'leftElbow' && keypoints[j].score > 0.3) {
+            else if (keypoints[j].part === this.side + 'Elbow' && keypoints[j].score > 0.3) {
                 f3 = 1;
                 le = keypoints[j];
             }
-            else if (keypoints[j].part === 'leftHip' && keypoints[j].score > 0.3) {
+            else if (keypoints[j].part === this.side + 'Hip' && keypoints[j].score > 0.3) {
                 f4 = 1;
                 lh = keypoints[j];
             }
@@ -1496,15 +1582,75 @@ var HelperClass = /** @class */ (function () {
                     return this.angle(lw.position, le.position, ls.position);
                     break;
                 case 2:
-                    return this.angle(le.position, ls.position, { x: ls.position.x, y: (ls.position.y + 100) });
+                    return this.angle(le.position, ls.position, {
+                        x: ls.position.x,
+                        y: (ls.position.y + 100)
+                    });
                     break;
-                default:
-                    return this.angle(lw.position, le.position, ls.position);
-                    ;
+                default: return this.angle(lw.position, le.position, ls.position);
             }
         }
         else
             return -1;
+    };
+    HelperClass.prototype.getAngleSqaut = function (temp, keypoints) {
+        var ls = undefined;
+        var lh = undefined;
+        var lk = undefined;
+        var f1 = 0;
+        var f2 = 0;
+        var f3 = 0;
+        for (var j = 0; j < keypoints.length; j++) {
+            if (keypoints[j].part === this.side + 'Shoulder' && keypoints[j].score > 0.5) {
+                f1 = 1;
+                ls = keypoints[j];
+            }
+            else if (keypoints[j].part === this.side + 'Hip' && keypoints[j].score > 0.5) {
+                f2 = 1;
+                lh = keypoints[j];
+            }
+            else if (keypoints[j].part === this.side + 'Knee' && keypoints[j].score > 0.5) {
+                f3 = 1;
+                lk = keypoints[j];
+            }
+        }
+        if (f1 && f2 && f3) {
+            switch (temp) {
+                case 1:
+                    return this.angle(ls.position, lh.position, lk.position);
+                    break;
+                default: return this.angle(ls.position, lh.position, lk.position);
+            }
+        }
+        else
+            return -1;
+    };
+    HelperClass.prototype.getPos = function (temp, keypoints) {
+        if (temp === 1) {
+            var hip = keypoints.find(function (obj) {
+                return obj.part === "leftHip";
+            });
+            if (hip.score > 0.4) {
+                return hip.position.y;
+            }
+        }
+        else if (temp === 2) {
+            var knee = keypoints.find(function (obj) {
+                return obj.part === "leftKnee";
+            });
+            if (knee.score > 0.4) {
+                return knee.position.y;
+            }
+        }
+        else if (temp === 3) {
+            var shoulder = keypoints.find(function (obj) {
+                return obj.part === "leftShoulder";
+            });
+            if (shoulder.score > 0.4) {
+                return shoulder.position.x;
+            }
+        }
+        return -1;
     };
     HelperClass.prototype.angle = function (A, B, C) {
         var AB = Math.sqrt(Math.pow(B.x - A.x, 2) + Math.pow(B.y - A.y, 2));
@@ -1514,11 +1660,170 @@ var HelperClass = /** @class */ (function () {
         // console.log(angle*180/Math.PI);
         return angle * 180 / Math.PI;
     };
+    HelperClass.prototype.checkConfidence = function (sidePoints) {
+        for (var i = sidePoints.length - 1; i >= 0; i--) {
+            if (sidePoints[i] < this.confidence_threshold)
+                return false;
+        }
+        return true;
+    };
+    HelperClass.prototype.checkPosition = function (points, keypoints) {
+        var sides = ['left', 'right'];
+        var sidePoints = {
+            "left": [], "right": []
+        };
+        var _loop_1 = function (i) {
+            var _loop_2 = function (j) {
+                var confidence = keypoints.find(function (obj) {
+                    return obj.part === sides[i] + points[j];
+                }).score;
+                sidePoints[sides[i]].push(confidence);
+            };
+            for (var j = points.length - 1; j >= 0; j--) {
+                _loop_2(j);
+            }
+        };
+        for (var i = sides.length - 1; i >= 0; i--) {
+            _loop_1(i);
+        }
+        var left = this.checkConfidence(sidePoints["left"]);
+        var right = this.checkConfidence(sidePoints["right"]);
+        if (left) {
+            this.side = "left";
+        }
+        else if (right) {
+            this.side = "right";
+        }
+        return left || right;
+    };
+    HelperClass.prototype.checkOrientation = function (keypoints) {
+        var side = this.getSide(keypoints) ? "right" : "left";
+        var opside = side == "right" ? "left" : "right";
+        var wrist = keypoints.find(function (obj) {
+            return obj.part === side + "Wrist";
+        });
+        var elbow = keypoints.find(function (obj) {
+            return obj.part === side + "Elbow";
+        });
+        var shoulder = keypoints.find(function (obj) {
+            return obj.part === side + "Shoulder";
+        });
+        var opshoulder = keypoints.find(function (obj) {
+            return obj.part === opside + "Shoulder";
+        });
+        var s2e = this.getDistance(shoulder.position, wrist.position);
+        var s2s = this.getDistance(shoulder.position, opshoulder.position);
+        var e2w = this.getDistance(elbow.position, wrist.position);
+        this.lastRecorded = (shoulder.position.x + opshoulder.position.x) / 2;
+        if (s2e / s2s > this.ratio_threshold) {
+            return true;
+        }
+        else {
+            var flag = this.getAngle(1, keypoints) < 90;
+            return flag;
+        }
+    };
+    HelperClass.prototype.checkCentral = function () {
+        var left_boundary = 0.3 * this.width;
+        var right_boundary = 0.7 * this.width;
+        // console.log(left_boundary,this.lastRecorded,right_boundary);
+        // console.log(left_boundary<this.lastRecorded,this.lastRecorded<right_boundary);
+        if (left_boundary < this.lastRecorded && this.lastRecorded < right_boundary)
+            return "centre";
+        else if (this.lastRecorded > right_boundary)
+            return 'h';
+        else
+            return 'l';
+    };
     HelperClass = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
     ], HelperClass);
     return HelperClass;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/helper_functions/util.ts":
+/*!******************************************!*\
+  !*** ./src/app/helper_functions/util.ts ***!
+  \******************************************/
+/*! exports provided: UtilClass */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UtilClass", function() { return UtilClass; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _tensorflow_models_posenet__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tensorflow-models/posenet */ "./node_modules/@tensorflow-models/posenet/dist/posenet.esm.js");
+
+
+
+var UtilClass = /** @class */ (function () {
+    function UtilClass() {
+    }
+    UtilClass.prototype.drawPoint = function (y, x, r, color, ctx) {
+        ctx.beginPath();
+        ctx.arc(x, y, r, 0, 2 * Math.PI);
+        ctx.fillStyle = color;
+        ctx.fill();
+    };
+    UtilClass.prototype.drawPosition = function (ctx) {
+        // ctx.beginPath();
+        // ctx.arc(350, 40, 10, 0, 2*Math.PI);
+        ctx.fillStyle = 'red';
+        // ctx.fill();
+        ctx.textAlign = "center";
+        ctx.font = "30px Cairo ";
+        ctx.fillText("Please Correct Your Position", 200, 400);
+    };
+    UtilClass.prototype.drawOrientation = function (ctx) {
+        ctx.fillStyle = 'yellow';
+        // ctx.fill();
+        ctx.textAlign = "center";
+        ctx.font = "30px Cairo ";
+        ctx.fillText("Please Correct Your Orientation", 200, 400);
+    };
+    UtilClass.prototype.drawKeypoints = function (keypoints, ctx) {
+        for (var i = 0; i < keypoints.length; i++) {
+            var keypoint = keypoints[i];
+            if (keypoint.score > 0.5) {
+                var _a = keypoint.position, y = _a.y, x = _a.x;
+                this.drawPoint(y, x, 3, 'aqua', ctx);
+            }
+        }
+    };
+    UtilClass.prototype.drawSkeleton = function (keypoints, ctx) {
+        var _this = this;
+        var adjacentKeyPoints = _tensorflow_models_posenet__WEBPACK_IMPORTED_MODULE_2__["getAdjacentKeyPoints"](keypoints, 0.5);
+        adjacentKeyPoints.forEach(function (keypoint) {
+            // console.log(keypoint[0].position)
+            _this.drawSegment([keypoint[0].position.y, keypoint[0].position.x], [keypoint[1].position.y, keypoint[1].position.x], 'aqua', ctx);
+        });
+    };
+    UtilClass.prototype.drawSegment = function (_a, _b, color, ctx) {
+        var ay = _a[0], ax = _a[1];
+        var by = _b[0], bx = _b[1];
+        var scale = 1;
+        ctx.beginPath();
+        ctx.moveTo(ax * scale, ay * scale);
+        ctx.lineTo(bx * scale, by * scale);
+        ctx.lineWidth = 4;
+        ctx.strokeStyle = color;
+        ctx.stroke();
+    };
+    UtilClass.prototype.toTuple = function (_a) {
+        var y = _a.y, x = _a.x;
+        return [y, x];
+    };
+    UtilClass = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], UtilClass);
+    return UtilClass;
 }());
 
 

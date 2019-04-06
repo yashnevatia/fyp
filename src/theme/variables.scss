@@ -52,10 +52,10 @@
   --ion-color-danger-tint: #f25454;
 
   /** dark **/
-  --ion-color-dark: #222428;
-  --ion-color-dark-rgb: 34, 34, 34;
-  --ion-color-dark-contrast: #ffffff;
-  --ion-color-dark-contrast-rgb: 255, 255, 255;
+  --ion-color-dark: #5ff442;
+  --ion-color-dark-rgb: 95, 244, 66;
+  --ion-color-dark-contrast: #000000;
+  --ion-color-dark-contrast-rgb: 255,255,255;
   --ion-color-dark-shade: #1e2023;
   --ion-color-dark-tint: #383a3e;
 
@@ -74,4 +74,106 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  /** base **/
+  /*--ion-color-base: greenyellow;*/
+}
+
+/*ion-content{
+  background-color: greenyellow;
+  background-image: linear-gradient(to right,#41aff4 ,#42f4df);
+}*/
+ ion-content,
+    .input-wrapper,
+    .item-inner,
+    .item,
+    ion-footer,
+    ion-item,
+    ion-label,
+    ion-list,
+    ion-toolbar
+     {
+      transition: all 1.1s ease;
+      /*background-color: black !important;*/
+      /*background: black !important;*/
+      background-image: linear-gradient(to bottom right, #000000,#001a09,#003312);
+      color: white !important;
+      font-family: 'Righteous', sans-serif;
+      text-align: center;
+    }
+    .time {
+      background-color: white;
+    }
+    .item {
+      transition: all 1s ease;
+      background-color: #f44336;
+      color: white;
+    }
+    ion-content .h1
+    {
+      text-align: center;
+      font-size: 2em;
+    }
+inner-scroll{
+  padding-top: 50%!important;
+}
+ion-button
+{
+  font-family: 'Cairo', sans-serif;
+  font-size: 25px;
+  height: 75px;
+  width: 100%;
+  position: relative;
+}
+.main_content{
+  padding-top: 15%;
+}
+.main_content2{
+  padding-top: 20%;
+}
+.input_div
+{
+  background-color: rgba(0,0,0,0.46);
+  border-radius: 5px;
+  font-size: 15px !important;
+  text-align: center !important;
+  margin-top: 5% !important;
+  /*padding: 1%;*/
+  font-family: 'Cairo', sans-serif !important;
+  color: white !important;
+}
+
+ion-input
+{
+  font-size: 15px !important;
+  /*text-align: center !important;*/
+  margin: 5% !important;
+  font-family: 'Righteous', sans-serif !important;
+  color: white !important;
+  padding-right: 5%;
+}
+.input_div input {
+  font-size: 25px !important;
+  /*text-align: center !important;*/
+  /*margin: 5% !important;*/
+  font-family: 'Righteous', sans-serif !important;
+  /*color: white !important;*/
+  margin-right: 5%;
+  padding-right: 5%!important;
+}
+inp/*ut {
+  padding-right: 5%!important;
+}*/
+
+.input_section {
+  margin-bottom: 10px;
+}
+
+
+.input_div h2{
+  float: left;
+  margin: 2% !important;
+  position: absolute;
+  color: white !important;
+
 }

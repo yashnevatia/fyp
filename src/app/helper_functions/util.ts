@@ -17,17 +17,21 @@ export class UtilClass {
     }
 
     drawPosition(ctx){
-        ctx.beginPath();
-        ctx.arc(350, 40, 10, 0, 2*Math.PI);
+        // ctx.beginPath();
+        // ctx.arc(350, 40, 10, 0, 2*Math.PI);
         ctx.fillStyle = 'red';
-        ctx.fill();
+        // ctx.fill();
+        ctx.textAlign = "center"; 
+        ctx.font = "30px Cairo ";
+        ctx.fillText("Please Correct Your Position",200,400);
     }
 
     drawOrientation(ctx){
-        ctx.beginPath();
-        ctx.arc(370, 40, 10, 0, 2*Math.PI);
         ctx.fillStyle = 'yellow';
-        ctx.fill();
+        // ctx.fill();
+        ctx.textAlign = "center"; 
+        ctx.font = "30px Cairo ";
+        ctx.fillText("Please Correct Your Orientation",200,400);
     }
 
     drawKeypoints(keypoints, ctx){
@@ -44,7 +48,7 @@ export class UtilClass {
     drawSkeleton(keypoints, ctx){
         const adjacentKeyPoints = posenet.getAdjacentKeyPoints(keypoints, 0.5);
         adjacentKeyPoints.forEach((keypoint) => {
-            console.log(keypoint[0].position)
+            // console.log(keypoint[0].position)
             this.drawSegment(
                 [keypoint[0].position.y, keypoint[0].position.x],
                 [keypoint[1].position.y, keypoint[1].position.x],
