@@ -68,6 +68,10 @@ export class HelperClass {
                   y:(ls.position.y+100)
               });
               break;
+              case 3: return this.angle(ls.position, lh.position, {
+                  x: lh.position.x + 100,
+                  y:(lh.position.y)
+              })
               default : return this.angle(lw.position,le.position,ls.position);
             }
         }

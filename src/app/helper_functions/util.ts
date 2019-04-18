@@ -5,6 +5,7 @@ import * as posenet from '@tensorflow-models/posenet';
 
 @Injectable()
 export class UtilClass {
+    public color: string = 'aqua';
     constructor(){
 
     }
@@ -21,7 +22,7 @@ export class UtilClass {
         // ctx.arc(350, 40, 10, 0, 2*Math.PI);
         ctx.fillStyle = 'red';
         // ctx.fill();
-        ctx.textAlign = "center"; 
+        ctx.textAlign = "center";
         ctx.font = "30px Cairo ";
         ctx.fillText("Please Correct Your Position",200,400);
     }
@@ -29,7 +30,7 @@ export class UtilClass {
     drawOrientation(ctx){
         ctx.fillStyle = 'yellow';
         // ctx.fill();
-        ctx.textAlign = "center"; 
+        ctx.textAlign = "center";
         ctx.font = "30px Cairo ";
         ctx.fillText("Please Correct Your Orientation",200,400);
     }
@@ -39,7 +40,7 @@ export class UtilClass {
             const keypoint = keypoints[i];
             if (keypoint.score > 0.5){
                 const {y, x} = keypoint.position;
-                this.drawPoint(y, x, 3, 'aqua', ctx);
+                this.drawPoint(y, x, 3, this.color, ctx);
             }
 
         }
@@ -52,7 +53,7 @@ export class UtilClass {
             this.drawSegment(
                 [keypoint[0].position.y, keypoint[0].position.x],
                 [keypoint[1].position.y, keypoint[1].position.x],
-                'aqua', ctx
+                this.color, ctx
             );
         });
     }
