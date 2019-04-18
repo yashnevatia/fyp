@@ -35,7 +35,16 @@ export class UtilClass {
         ctx.fillText("Please Correct Your Orientation",200,400);
     }
 
+    drawRest(ctx){
+        ctx.fillStyle = 'red';
+        // ctx.fill();
+        ctx.textAlign = "center";
+        ctx.font = "30px Cairo ";
+        ctx.fillText("REST PERIOD",200,400);
+    }
+
     drawKeypoints(keypoints, ctx){
+        console.log(this.color);
         for(let i=0;i<keypoints.length;i++){
             const keypoint = keypoints[i];
             if (keypoint.score > 0.5){

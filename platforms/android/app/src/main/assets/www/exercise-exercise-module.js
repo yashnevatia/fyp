@@ -1080,34 +1080,36 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _tensorflow_models_posenet__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tensorflow-models/posenet */ "./node_modules/@tensorflow-models/posenet/dist/posenet.esm.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _helper_functions_helper_functions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../helper_functions/helper_functions */ "./src/app/helper_functions/helper_functions.ts");
-/* harmony import */ var _helper_functions_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../helper_functions/util */ "./src/app/helper_functions/util.ts");
-/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! firebase/app */ "./node_modules/firebase/app/dist/index.cjs.js");
-/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(firebase_app__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var firebase_firestore__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! firebase/firestore */ "./node_modules/firebase/firestore/dist/index.esm.js");
-/* harmony import */ var firebase_database__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! firebase/database */ "./node_modules/firebase/database/dist/index.esm.js");
-/* harmony import */ var _ionic_native_bluetooth_serial_ngx__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @ionic-native/bluetooth-serial/ngx */ "./node_modules/@ionic-native/bluetooth-serial/ngx/index.js");
+/* harmony import */ var _ionic_native_text_to_speech_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/text-to-speech/ngx */ "./node_modules/@ionic-native/text-to-speech/ngx/index.js");
+/* harmony import */ var _helper_functions_helper_functions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../helper_functions/helper_functions */ "./src/app/helper_functions/helper_functions.ts");
+/* harmony import */ var _helper_functions_util__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../helper_functions/util */ "./src/app/helper_functions/util.ts");
+/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! firebase/app */ "./node_modules/firebase/app/dist/index.cjs.js");
+/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(firebase_app__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var firebase_firestore__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! firebase/firestore */ "./node_modules/firebase/firestore/dist/index.esm.js");
+/* harmony import */ var firebase_database__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! firebase/database */ "./node_modules/firebase/database/dist/index.esm.js");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
 
 
 
 
-// import { TextToSpeech } from '@ionic-native/text-to-speech/ngx';
 
 
 
 
 
 
+// import { BluetoothSerial } from '@ionic-native/bluetooth-serial/ngx';
 
 var ExercisePage = /** @class */ (function () {
-    function ExercisePage(router, activatedRoute, bluetoothSerial, plt) {
+    // color: string = 'aqua';
+    function ExercisePage(router, activatedRoute, /*private bluetoothSerial: BluetoothSerial, */ plt, tts) {
         this.router = router;
         this.activatedRoute = activatedRoute;
-        this.bluetoothSerial = bluetoothSerial;
         this.plt = plt;
+        this.tts = tts;
         this.state = 1;
         this.count = 0;
+        this.rep = 0;
         // curl variables
         this.angles = [];
         this.elbow = false;
@@ -1129,11 +1131,9 @@ var ExercisePage = /** @class */ (function () {
         this.bottom_position = -1;
         this.shoulder_middle = -1;
         this.shoulder = false;
-        this.success = function (data) { return alert(data); };
-        this.fail = function (error) { return alert(error); };
-        this.hf = new _helper_functions_helper_functions__WEBPACK_IMPORTED_MODULE_4__["HelperClass"]();
-        this.util = new _helper_functions_util__WEBPACK_IMPORTED_MODULE_5__["UtilClass"]();
-        bluetoothSerial.enable();
+        this.hf = new _helper_functions_helper_functions__WEBPACK_IMPORTED_MODULE_5__["HelperClass"]();
+        this.util = new _helper_functions_util__WEBPACK_IMPORTED_MODULE_6__["UtilClass"]();
+        // bluetoothSerial.enable();
     }
     ExercisePage.prototype.ngOnInit = function () {
         var _this = this;
@@ -1218,15 +1218,16 @@ var ExercisePage = /** @class */ (function () {
         ctx.fillText(this.rep.toString(), w * 0.1, 50);
     };
     ExercisePage.prototype.speaker = function (tospeak) {
-        //     console.log(tospeak);
-        //     this.tts.speak(tospeak)
-        //     .then(() => console.log('Success'))
-        //     .catch((reason: any) => console.log(reason));
+        console.log(tospeak);
+        this.tts.speak(tospeak)
+            .then(function () { return console.log('Success'); })
+            .catch(function (reason) { return console.log(reason); });
     };
     ExercisePage.prototype.helper = function () {
         var _this = this;
         if (this.rep >= this.reps_per_set) {
             clearInterval(this.interval);
+            // this.util.drawOrientation(this.context);
             if (this.set_count < this.curl_sets) {
                 setTimeout(this.startWorkout.bind(this), this.rest_time * 1000, 'CURL');
                 this.speaker("Well done. Rest for " + this.rest_time + " now.");
@@ -1242,7 +1243,7 @@ var ExercisePage = /** @class */ (function () {
             else {
                 console.log("WORKOUT DONE");
                 this.speaker("Well done. Your workout is now over.");
-                firebase_app__WEBPACK_IMPORTED_MODULE_6__["firestore"]().collection("workouts").add({
+                firebase_app__WEBPACK_IMPORTED_MODULE_7__["firestore"]().collection("workouts").add({
                     curl: this.curl_sets,
                     raise: this.squat_sets,
                     date: new Date().toString()
@@ -1252,6 +1253,7 @@ var ExercisePage = /** @class */ (function () {
                         return [2 /*return*/];
                     });
                 }); });
+                this.router.navigate(['feedback']);
             }
         }
     };
@@ -1337,8 +1339,7 @@ var ExercisePage = /** @class */ (function () {
                                 parts_to_check = [];
                                 dir = me.hf.checkCentral();
                                 // console.log("dir",dir);
-                                if (dir != "centre")
-                                    me.turnOn(dir);
+                                // if(dir!="centre") me.turnOn(dir);
                                 if (me.curling) {
                                     parts_to_check = ["Wrist", "Elbow", "Shoulder"];
                                 }
@@ -1347,26 +1348,31 @@ var ExercisePage = /** @class */ (function () {
                                 }
                                 check = me.checkPositionOrientation(pose.keypoints, parts_to_check);
                                 me.setContext(me.context);
-                                if (check) {
-                                    if (me.correct_orientation > 20) {
-                                        me.util.drawKeypoints(pose.keypoints, me.context);
-                                        me.util.drawSkeleton(pose.keypoints, me.context);
-                                        if (me.curling) {
-                                            me.main_function_bicep(pose.keypoints);
+                                if (me.rest) {
+                                    me.util.drawRest(me.context);
+                                }
+                                else {
+                                    if (check) {
+                                        if (me.correct_orientation > 20) {
+                                            me.util.drawKeypoints(pose.keypoints, me.context);
+                                            me.util.drawSkeleton(pose.keypoints, me.context);
+                                            if (me.curling) {
+                                                me.main_function_bicep(pose.keypoints);
+                                            }
+                                            else {
+                                                me.main_function_squat(pose.keypoints);
+                                            }
                                         }
                                         else {
-                                            me.main_function_squat(pose.keypoints);
+                                            me.correct_orientation += 1;
                                         }
                                     }
-                                    else {
-                                        me.correct_orientation += 1;
+                                    if (me.correct_orientation < 20 && me.correct_position >= 20) {
+                                        me.util.drawOrientation(me.context);
                                     }
-                                }
-                                if (me.correct_orientation < 20 && me.correct_position >= 20) {
-                                    me.util.drawOrientation(me.context);
-                                }
-                                if (me.correct_position < 20) {
-                                    me.util.drawPosition(me.context);
+                                    if (me.correct_position < 20) {
+                                        me.util.drawPosition(me.context);
+                                    }
                                 }
                                 requestAnimationFrame(poseDetectionFrame);
                                 return [2 /*return*/];
@@ -1419,9 +1425,11 @@ var ExercisePage = /** @class */ (function () {
                 // console.log(shoulder_position, this.shoulder_middle)
                 this.shoulder = true;
                 this.count += 1;
+                this.util.color = 'red';
                 if (this.count > 50) {
                     // console.log("SAY BACK BENDING")
-                    // this.tts.speak('Elbow error')
+                    this.speaker("Back Error");
+                    // this.tts.speak('Back error')
                     //   .then(() => console.log('Success'))
                     //   .catch((reason: any) => console.log(reason));
                     this.count = 0;
@@ -1430,12 +1438,14 @@ var ExercisePage = /** @class */ (function () {
             else {
                 this.shoulder = false;
                 this.count = 0;
+                this.util.color = 'aqua';
             }
         }
     };
     ExercisePage.prototype.main_function_bicep = function (keypoints) {
         var bicep_angle = this.hf.getAngle(1, keypoints);
         var elbow_angle = this.hf.getAngle(2, keypoints);
+        var back_angle = this.hf.getAngle(3, keypoints);
         if (bicep_angle !== -1) {
             if (this.state === 1 && bicep_angle < 90) {
                 this.state = 2;
@@ -1453,8 +1463,11 @@ var ExercisePage = /** @class */ (function () {
             if (elbow_angle > 15) {
                 this.elbow = true;
                 this.count += 1;
+                this.util.color = 'red';
+                console.log(this.util.color);
                 if (this.count > 20) {
                     // console.log("SAY ELBOW")
+                    this.speaker("Elbow Error");
                     // this.tts.speak('Elbow error')
                     //   .then(() => console.log('Success'))
                     //   .catch((reason: any) => console.log(reason));
@@ -1464,39 +1477,18 @@ var ExercisePage = /** @class */ (function () {
             else {
                 this.elbow = false;
                 this.count = 0;
+                this.util.color = 'aqua';
             }
         }
-    };
-    ExercisePage.prototype.turnOn = function (dir) {
-        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-            var ctrl;
-            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        ctrl = this;
-                        return [4 /*yield*/, this.bluetoothSerial.write(dir).then(function (success) {
-                                console.log(success);
-                                // ctrl.model.ledResponse = success;
-                            }, function (failure) {
-                                console.log(failure);
-                                // ctrl.model.ledResponse = failure;
-                            })];
-                    case 1:
-                        _a.sent();
-                        return [2 /*return*/];
-                }
-            });
-        });
-    };
-    ExercisePage.prototype.turnOff = function () {
-        var ctrl = this;
-        this.bluetoothSerial.write('0').then(function (success) {
-            console.log(success);
-            ctrl.model.ledResponse = success;
-        }, function (failure) {
-            console.log(failure);
-            ctrl.model.ledResponse = failure;
-        });
+        // if (back_angle !== -1){
+        //     console.log(back_angle)
+        //     if(back_angle > 100){
+        //         this.util.color = 'red';
+        //     }
+        //     else{
+        //         // this.util.color = 'aqua';
+        //     }
+        // }
     };
     ExercisePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1504,7 +1496,7 @@ var ExercisePage = /** @class */ (function () {
             template: __webpack_require__(/*! ./exercise.page.html */ "./src/app/exercise/exercise.page.html"),
             styles: [__webpack_require__(/*! ./exercise.page.scss */ "./src/app/exercise/exercise.page.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"], _ionic_native_bluetooth_serial_ngx__WEBPACK_IMPORTED_MODULE_9__["BluetoothSerial"], _ionic_angular__WEBPACK_IMPORTED_MODULE_10__["Platform"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"], _ionic_angular__WEBPACK_IMPORTED_MODULE_10__["Platform"], _ionic_native_text_to_speech_ngx__WEBPACK_IMPORTED_MODULE_4__["TextToSpeech"]])
     ], ExercisePage);
     return ExercisePage;
 }());
@@ -1587,6 +1579,10 @@ var HelperClass = /** @class */ (function () {
                         y: (ls.position.y + 100)
                     });
                     break;
+                case 3: return this.angle(ls.position, lh.position, {
+                    x: lh.position.x + 100,
+                    y: (lh.position.y)
+                });
                 default: return this.angle(lw.position, le.position, ls.position);
             }
         }
@@ -1764,6 +1760,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var UtilClass = /** @class */ (function () {
     function UtilClass() {
+        this.color = 'aqua';
     }
     UtilClass.prototype.drawPoint = function (y, x, r, color, ctx) {
         ctx.beginPath();
@@ -1787,12 +1784,20 @@ var UtilClass = /** @class */ (function () {
         ctx.font = "30px Cairo ";
         ctx.fillText("Please Correct Your Orientation", 200, 400);
     };
+    UtilClass.prototype.drawRest = function (ctx) {
+        ctx.fillStyle = 'red';
+        // ctx.fill();
+        ctx.textAlign = "center";
+        ctx.font = "30px Cairo ";
+        ctx.fillText("REST PERIOD", 200, 400);
+    };
     UtilClass.prototype.drawKeypoints = function (keypoints, ctx) {
+        console.log(this.color);
         for (var i = 0; i < keypoints.length; i++) {
             var keypoint = keypoints[i];
             if (keypoint.score > 0.5) {
                 var _a = keypoint.position, y = _a.y, x = _a.x;
-                this.drawPoint(y, x, 3, 'aqua', ctx);
+                this.drawPoint(y, x, 3, this.color, ctx);
             }
         }
     };
@@ -1801,7 +1806,7 @@ var UtilClass = /** @class */ (function () {
         var adjacentKeyPoints = _tensorflow_models_posenet__WEBPACK_IMPORTED_MODULE_2__["getAdjacentKeyPoints"](keypoints, 0.5);
         adjacentKeyPoints.forEach(function (keypoint) {
             // console.log(keypoint[0].position)
-            _this.drawSegment([keypoint[0].position.y, keypoint[0].position.x], [keypoint[1].position.y, keypoint[1].position.x], 'aqua', ctx);
+            _this.drawSegment([keypoint[0].position.y, keypoint[0].position.x], [keypoint[1].position.y, keypoint[1].position.x], _this.color, ctx);
         });
     };
     UtilClass.prototype.drawSegment = function (_a, _b, color, ctx) {

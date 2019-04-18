@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as tf from '@tensorflow/tfjs';
 import * as posenet from '@tensorflow-models/posenet';
 import { Router, ActivatedRoute} from '@angular/router';
-// import { TextToSpeech } from '@ionic-native/text-to-speech/ngx';
+import { TextToSpeech } from '@ionic-native/text-to-speech/ngx';
 import { HelperClass } from '../helper_functions/helper_functions';
 import { UtilClass } from '../helper_functions/util';
 import * as firebase from 'firebase/app';
@@ -64,7 +64,7 @@ export class ExercisePage implements OnInit {
     context: any;
     // color: string = 'aqua';
 
-    constructor(private router: Router, public activatedRoute: ActivatedRoute, /*private bluetoothSerial: BluetoothSerial, */ private plt: Platform) {
+    constructor(private router: Router, public activatedRoute: ActivatedRoute, /*private bluetoothSerial: BluetoothSerial, */ private plt: Platform, private tts: TextToSpeech) {
         this.hf = new HelperClass();
         this.util = new UtilClass();
         // bluetoothSerial.enable();
@@ -149,15 +149,16 @@ export class ExercisePage implements OnInit {
     }
 
     speaker(tospeak){
-    //     console.log(tospeak);
-    //     this.tts.speak(tospeak)
-    //     .then(() => console.log('Success'))
-    //     .catch((reason: any) => console.log(reason));
+        console.log(tospeak);
+        this.tts.speak(tospeak)
+        .then(() => console.log('Success'))
+        .catch((reason: any) => console.log(reason));
     }
 
     helper(){
         if(this.rep >= this.reps_per_set){
             clearInterval(this.interval);
+            // this.util.drawOrientation(this.context);
             if(this.set_count < this.curl_sets){
                 setTimeout(this.startWorkout.bind(this), this.rest_time*1000, 'CURL');
                 this.speaker(`Well done. Rest for ${this.rest_time} now.`)
@@ -179,6 +180,7 @@ export class ExercisePage implements OnInit {
                 }).then(async (doc) => {
                     console.log("workout saved")
                 })
+                this.router.navigate(['feedback']);
             }
 
         }
@@ -268,28 +270,34 @@ export class ExercisePage implements OnInit {
             let check = me.checkPositionOrientation(pose.keypoints, parts_to_check);
             me.setContext(me.context);
 
-            if(check){
-                if(me.correct_orientation > 20){
-                    me.util.drawKeypoints(pose.keypoints, me.context);
-                    me.util.drawSkeleton(pose.keypoints, me.context);
-                    if(me.curling){
-                        me.main_function_bicep(pose.keypoints);
-                    }else{
-                        me.main_function_squat(pose.keypoints);
+            if(me.rest){
+                me.util.drawRest(me.context);
+            }else{
+                if(check){
+                    if(me.correct_orientation > 20){
+                        me.util.drawKeypoints(pose.keypoints, me.context);
+                        me.util.drawSkeleton(pose.keypoints, me.context);
+                        if(me.curling){
+                            me.main_function_bicep(pose.keypoints);
+                        }else{
+                            me.main_function_squat(pose.keypoints);
+                        }
+                    }
+                    else{
+                        me.correct_orientation += 1;
                     }
                 }
-                else{
-                    me.correct_orientation += 1;
+
+                if (me.correct_orientation<20 && me.correct_position>=20){
+                    me.util.drawOrientation(me.context);
+
+                }
+                if(me.correct_position < 20){
+                    me.util.drawPosition(me.context);
                 }
             }
-            if (me.correct_orientation<20 && me.correct_position>=20){
-                me.util.drawOrientation(me.context);
-
-            }
-            if(me.correct_position < 20){
-                me.util.drawPosition(me.context);
-            }
             requestAnimationFrame(poseDetectionFrame);
+            
         }
         poseDetectionFrame()
     }
@@ -328,10 +336,11 @@ export class ExercisePage implements OnInit {
                 // console.log(shoulder_position, this.shoulder_middle)
                 this.shoulder = true;
                 this.count += 1;
-                // this.util.color = 'red';
+                this.util.color = 'red';
                 if (this.count > 50){
                     // console.log("SAY BACK BENDING")
-                    // this.tts.speak('Elbow error')
+                    this.speaker("Back Error");
+                    // this.tts.speak('Back error')
                     //   .then(() => console.log('Success'))
                     //   .catch((reason: any) => console.log(reason));
                     this.count = 0;
@@ -340,6 +349,7 @@ export class ExercisePage implements OnInit {
             }else{
                 this.shoulder = false;
                 this.count = 0;
+                this.util.color = 'aqua';
             }
         }
     }
@@ -367,10 +377,11 @@ export class ExercisePage implements OnInit {
             if (elbow_angle > 15){
                 this.elbow = true;
                 this.count += 1;
-                // this.util.color = 'red';
-                // console.log(this.util.color)
+                this.util.color = 'red';
+                console.log(this.util.color)
                 if (this.count > 20){
                     // console.log("SAY ELBOW")
+                    this.speaker("Elbow Error");
                     // this.tts.speak('Elbow error')
                     //   .then(() => console.log('Success'))
                     //   .catch((reason: any) => console.log(reason));
@@ -381,16 +392,19 @@ export class ExercisePage implements OnInit {
             }else{
                 this.elbow = false;
                 this.count = 0;
-                // this.util.color = 'aqua';
+                this.util.color = 'aqua';
             }
         }
 
-        if (back_angle !== -1){
-            console.log(back_angle)
-            if(back_angle > 100){
-                // this.util.color = 'red';
-            }
-        }
+        // if (back_angle !== -1){
+        //     console.log(back_angle)
+        //     if(back_angle > 100){
+        //         this.util.color = 'red';
+        //     }
+        //     else{
+        //         // this.util.color = 'aqua';
+        //     }
+        // }
 
     }
 

@@ -2881,28 +2881,20 @@ var map = {
 	],
 	"./exercise/exercise.module": [
 		"./src/app/exercise/exercise.module.ts",
-		"default~exercise-exercise-module~feedback-feedback-module~login-login-module",
 		"default~exercise-exercise-module~feedback-feedback-module",
 		"common",
 		"exercise-exercise-module"
 	],
 	"./feedback/feedback.module": [
 		"./src/app/feedback/feedback.module.ts",
-		"default~exercise-exercise-module~feedback-feedback-module~login-login-module",
-		"default~data-data-module~feedback-feedback-module",
 		"default~exercise-exercise-module~feedback-feedback-module",
+		"default~data-data-module~feedback-feedback-module",
 		"common",
 		"feedback-feedback-module"
 	],
 	"./home/home.module": [
 		"./src/app/home/home.module.ts",
 		"home-home-module"
-	],
-	"./login/login.module": [
-		"./src/app/login/login.module.ts",
-		"default~exercise-exercise-module~feedback-feedback-module~login-login-module",
-		"common",
-		"login-login-module"
 	],
 	"./start/start.module": [
 		"./src/app/start/start.module.ts",
@@ -2952,7 +2944,6 @@ var routes = [
     { path: 'home', loadChildren: './home/home.module#HomePageModule' },
     { path: 'feedback', loadChildren: './feedback/feedback.module#FeedbackPageModule' },
     { path: 'exercise', loadChildren: './exercise/exercise.module#ExercisePageModule' },
-    { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
     { path: 'start', loadChildren: './start/start.module#StartPageModule' },
     { path: 'data', loadChildren: './data/data.module#DataPageModule' },
 ];
