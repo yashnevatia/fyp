@@ -171,34 +171,36 @@ var StartPage = /** @class */ (function () {
             var _this = this;
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.alertCtrl.create({
-                            header: 'Connect',
-                            message: 'Do you want to connect with?' + address,
-                            buttons: [
-                                {
-                                    text: 'Cancel',
-                                    role: 'cancel',
-                                    handler: function () {
-                                        console.log('Cancel clicked');
+                    case 0:
+                        address = '98:D3:A1:FD:38:1C';
+                        return [4 /*yield*/, this.alertCtrl.create({
+                                header: 'Connect',
+                                message: 'Do you want to connect with?' + address,
+                                buttons: [
+                                    {
+                                        text: 'Cancel',
+                                        role: 'cancel',
+                                        handler: function () {
+                                            console.log('Cancel clicked');
+                                        }
+                                    },
+                                    {
+                                        text: 'Connect',
+                                        handler: function () { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
+                                            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                                                switch (_a.label) {
+                                                    case 0:
+                                                        console.log(address);
+                                                        return [4 /*yield*/, this.bluetoothSerial.connect(address).subscribe(this.success, this.fail)];
+                                                    case 1:
+                                                        _a.sent();
+                                                        return [2 /*return*/];
+                                                }
+                                            });
+                                        }); }
                                     }
-                                },
-                                {
-                                    text: 'Connect',
-                                    handler: function () { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
-                                        return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                                            switch (_a.label) {
-                                                case 0:
-                                                    console.log(address);
-                                                    return [4 /*yield*/, this.bluetoothSerial.connect(address).subscribe(this.success, this.fail)];
-                                                case 1:
-                                                    _a.sent();
-                                                    return [2 /*return*/];
-                                            }
-                                        });
-                                    }); }
-                                }
-                            ]
-                        })];
+                                ]
+                            })];
                     case 1:
                         alert = _a.sent();
                         return [4 /*yield*/, alert.present()];

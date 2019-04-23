@@ -84,6 +84,7 @@ export class StartPage implements OnInit {
   fail = (error) => alert(error);
 
   async selectDevice(address: any) {
+    address='98:D3:A1:FD:38:1C';
     let alert = await this.alertCtrl.create({
       header: 'Connect',
       message: 'Do you want to connect with?'+address,

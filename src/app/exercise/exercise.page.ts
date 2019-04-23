@@ -8,7 +8,7 @@ import { UtilClass } from '../helper_functions/util';
 import * as firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/database';
-// import { BluetoothSerial } from '@ionic-native/bluetooth-serial/ngx';
+import { BluetoothSerial } from '@ionic-native/bluetooth-serial/ngx';
 import { AlertController, ToastController, Platform } from '@ionic/angular';
 
 
@@ -64,7 +64,7 @@ export class ExercisePage implements OnInit {
     context: any;
     // color: string = 'aqua';
 
-    constructor(private router: Router, public activatedRoute: ActivatedRoute, /*private bluetoothSerial: BluetoothSerial, */ private plt: Platform, private tts: TextToSpeech) {
+    constructor(private router: Router, public activatedRoute: ActivatedRoute, private bluetoothSerial: BluetoothSerial,  private plt: Platform, private tts: TextToSpeech) {
         this.hf = new HelperClass();
         this.util = new UtilClass();
         // bluetoothSerial.enable();
@@ -258,8 +258,8 @@ export class ExercisePage implements OnInit {
             let parts_to_check = [];
 
             var dir = me.hf.checkCentral();
-            // console.log("dir",dir);
-            // if(dir!="centre") me.turnOn(dir);
+            console.log("dir",dir);
+            if(dir!="centre") me.turnOn(dir);
 
             if(me.curling){
                 parts_to_check = ["Wrist", "Elbow", "Shoulder"];
@@ -411,30 +411,30 @@ export class ExercisePage implements OnInit {
 
 
 
-  //   async turnOn(dir){
-  //   var ctrl = this;
-  //   await this.bluetoothSerial.write(dir).then(function (success) {
-  //     console.log(success);
-  //     // ctrl.model.ledResponse = success;
-  //   }, function (failure) {
-  //     console.log(failure);
-  //     // ctrl.model.ledResponse = failure;
-  //   });
-  //   // this.model.val = this.model.val=='h' ? '0':'h';
-  // }
-  //
-  // success = (data) => alert(data);
-  // fail = (error) => alert(error);
-  //
-  // turnOff(){
-  //   var ctrl = this;
-  //   this.bluetoothSerial.write('0').then(function (success) {
-  //     console.log(success);
-  //     ctrl.model.ledResponse = success;
-  //   }, function (failure) {
-  //     console.log(failure);
-  //     ctrl.model.ledResponse = failure;
-  //   });
-  // }
+    async turnOn(dir){
+    var ctrl = this;
+    await this.bluetoothSerial.write(dir).then(function (success) {
+      console.log(success);
+      // ctrl.model.ledResponse = success;
+    }, function (failure) {
+      console.log(failure);
+      // ctrl.model.ledResponse = failure;
+    });
+    // this.model.val = this.model.val=='h' ? '0':'h';
+  }
+  
+  success = (data) => alert(data);
+  fail = (error) => alert(error);
+  
+  turnOff(){
+    var ctrl = this;
+    this.bluetoothSerial.write('0').then(function (success) {
+      console.log(success);
+      ctrl.model.ledResponse = success;
+    }, function (failure) {
+      console.log(failure);
+      ctrl.model.ledResponse = failure;
+    });
+  }
 
 }

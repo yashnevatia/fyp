@@ -1087,7 +1087,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(firebase_app__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var firebase_firestore__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! firebase/firestore */ "./node_modules/firebase/firestore/dist/index.esm.js");
 /* harmony import */ var firebase_database__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! firebase/database */ "./node_modules/firebase/database/dist/index.esm.js");
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _ionic_native_bluetooth_serial_ngx__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @ionic-native/bluetooth-serial/ngx */ "./node_modules/@ionic-native/bluetooth-serial/ngx/index.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
 
 
 
@@ -1098,13 +1099,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-// import { BluetoothSerial } from '@ionic-native/bluetooth-serial/ngx';
+
 
 var ExercisePage = /** @class */ (function () {
     // color: string = 'aqua';
-    function ExercisePage(router, activatedRoute, /*private bluetoothSerial: BluetoothSerial, */ plt, tts) {
+    function ExercisePage(router, activatedRoute, bluetoothSerial, plt, tts) {
         this.router = router;
         this.activatedRoute = activatedRoute;
+        this.bluetoothSerial = bluetoothSerial;
         this.plt = plt;
         this.tts = tts;
         this.state = 1;
@@ -1131,6 +1133,8 @@ var ExercisePage = /** @class */ (function () {
         this.bottom_position = -1;
         this.shoulder_middle = -1;
         this.shoulder = false;
+        this.success = function (data) { return alert(data); };
+        this.fail = function (error) { return alert(error); };
         this.hf = new _helper_functions_helper_functions__WEBPACK_IMPORTED_MODULE_5__["HelperClass"]();
         this.util = new _helper_functions_util__WEBPACK_IMPORTED_MODULE_6__["UtilClass"]();
         // bluetoothSerial.enable();
@@ -1338,8 +1342,9 @@ var ExercisePage = /** @class */ (function () {
                                 pose = _a.sent();
                                 parts_to_check = [];
                                 dir = me.hf.checkCentral();
-                                // console.log("dir",dir);
-                                // if(dir!="centre") me.turnOn(dir);
+                                console.log("dir", dir);
+                                if (dir != "centre")
+                                    me.turnOn(dir);
                                 if (me.curling) {
                                     parts_to_check = ["Wrist", "Elbow", "Shoulder"];
                                 }
@@ -1490,13 +1495,44 @@ var ExercisePage = /** @class */ (function () {
         //     }
         // }
     };
+    ExercisePage.prototype.turnOn = function (dir) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var ctrl;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        ctrl = this;
+                        return [4 /*yield*/, this.bluetoothSerial.write(dir).then(function (success) {
+                                console.log(success);
+                                // ctrl.model.ledResponse = success;
+                            }, function (failure) {
+                                console.log(failure);
+                                // ctrl.model.ledResponse = failure;
+                            })];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    ExercisePage.prototype.turnOff = function () {
+        var ctrl = this;
+        this.bluetoothSerial.write('0').then(function (success) {
+            console.log(success);
+            ctrl.model.ledResponse = success;
+        }, function (failure) {
+            console.log(failure);
+            ctrl.model.ledResponse = failure;
+        });
+    };
     ExercisePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-exercise',
             template: __webpack_require__(/*! ./exercise.page.html */ "./src/app/exercise/exercise.page.html"),
             styles: [__webpack_require__(/*! ./exercise.page.scss */ "./src/app/exercise/exercise.page.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"], _ionic_angular__WEBPACK_IMPORTED_MODULE_10__["Platform"], _ionic_native_text_to_speech_ngx__WEBPACK_IMPORTED_MODULE_4__["TextToSpeech"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"], _ionic_native_bluetooth_serial_ngx__WEBPACK_IMPORTED_MODULE_10__["BluetoothSerial"], _ionic_angular__WEBPACK_IMPORTED_MODULE_11__["Platform"], _ionic_native_text_to_speech_ngx__WEBPACK_IMPORTED_MODULE_4__["TextToSpeech"]])
     ], ExercisePage);
     return ExercisePage;
 }());
