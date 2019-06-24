@@ -1051,7 +1051,7 @@ var ExercisePageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = " <link href=\"https://fonts.googleapis.com/css?family=Cairo|Lato|Raleway|Righteous\" rel=\"stylesheet\">\n\n\n<div class=\"video-container\">\n  <video id=\"video\" controls=\"controls\" preload=\"metadata\" autoplay=\"autoplay\" webkit-playsinline=\"webkit-playsinline\" class=\"videoPlayer\">\n    <source type=\"video/mp4\" />\n  </video>\n<!--   <div class=\"video-filter\" id=\"yellow_filter\" style=\"background-color: rgba(234, 224, 37,.5)\"></div>\n  <div class=\"video-filter\" id=\"red_filter\" style=\"background-color: rgba(196, 49, 33,.5)\"></div> -->\n</div>\n<canvas id=\"mainCanvas\">\n</canvas>"
+module.exports = " <link href=\"https://fonts.googleapis.com/css?family=Cairo|Lato|Raleway|Righteous\" rel=\"stylesheet\">\n\n\n<div class=\"video-container\">\n  <video id=\"video\" controls=\"controls\" preload=\"metadata\" autoplay=\"autoplay\" webkit-playsinline=\"webkit-playsinline\" class=\"videoPlayer\">\n    <source type=\"video/mp4\" />\n  </video>\n\n</div>\n<canvas id=\"mainCanvas\">\n</canvas>"
 
 /***/ }),
 
@@ -1218,8 +1218,12 @@ var ExercisePage = /** @class */ (function () {
         ctx.translate(-w, 0);
         ctx.drawImage(this.video, 0, 0, w, h);
         ctx.restore();
-        ctx.font = "50px Comic Sans MS";
+        ctx.font = "50px Cairo";
         ctx.fillText(this.rep.toString(), w * 0.1, 50);
+        var ex = this.curling ? "BICEP CURL" : "SQUAT";
+        if (!this.rest) {
+            ctx.fillText(ex, w * 0.5, h * 0.9);
+        }
     };
     ExercisePage.prototype.speaker = function (tospeak) {
         console.log(tospeak);

@@ -144,8 +144,14 @@ export class ExercisePage implements OnInit {
         ctx.translate(-w, 0);
         ctx.drawImage(this.video, 0, 0, w, h);
         ctx.restore();
-        ctx.font = "50px Comic Sans MS";
+        ctx.font = "50px Cairo";
         ctx.fillText(this.rep.toString(), w*0.1, 50);
+
+        var ex = this.curling? "BICEP CURL":"SQUAT";
+        if(!this.rest)
+        {
+            ctx.fillText(ex, w*0.5, h*0.9);
+        }
     }
 
     speaker(tospeak){
