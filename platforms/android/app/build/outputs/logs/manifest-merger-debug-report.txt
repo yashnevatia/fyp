@@ -1,16 +1,16 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml:2:1-22:12
-INJECTED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml:2:1-22:12
-INJECTED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml:2:1-22:12
-INJECTED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml:2:1-22:12
+ADDED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml:2:1-23:12
+INJECTED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml:2:1-23:12
+INJECTED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml:2:1-23:12
+INJECTED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml:2:1-23:12
 MERGED from [com.android.support:exifinterface:25.4.0] /Users/vishnuchopra/.gradle/caches/transforms-1/files-1.1/exifinterface-25.4.0.aar/9763c6985b23f41fe2d55f647e895fb0/AndroidManifest.xml:17:1-28:12
 MERGED from [:CordovaLib] /Users/vishnuchopra/Project/fyp/platforms/android/CordovaLib/build/intermediates/manifests/full/debug/AndroidManifest.xml:20:1-27:12
-INJECTED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml:2:1-22:12
-INJECTED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml:2:1-22:12
-INJECTED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml:2:1-22:12
+INJECTED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml:2:1-23:12
+INJECTED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml:2:1-23:12
+INJECTED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml:2:1-23:12
 	package
-		ADDED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml:2:98-124
+		ADDED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml:2:98-119
 		INJECTED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml
 	android:versionName
@@ -20,7 +20,7 @@ INJECTED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/And
 	android:hardwareAccelerated
 		ADDED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml:2:11-45
 	xmlns:android
-		ADDED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml:2:125-183
+		ADDED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml:2:120-178
 	android:versionCode
 		ADDED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml:2:46-69
 		INJECTED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml
@@ -55,7 +55,7 @@ MERGED from [com.android.support:exifinterface:25.4.0] /Users/vishnuchopra/.grad
 		ADDED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml:5:18-52
 	android:icon
 		ADDED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml:5:53-80
-activity#io.ionic.starter.MainActivity
+activity#io.debug.ts.MainActivity
 ADDED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml:6:9-11:20
 	android:label
 		ADDED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml:6:97-134
@@ -133,6 +133,10 @@ uses-permission#android.permission.ACCESS_COARSE_LOCATION
 ADDED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml:21:5-81
 	android:name
 		ADDED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml:21:22-78
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml:22:5-81
+	android:name
+		ADDED from /Users/vishnuchopra/Project/fyp/platforms/android/app/src/main/AndroidManifest.xml:22:22-78
 meta-data#android.support.VERSION
 ADDED from [com.android.support:exifinterface:25.4.0] /Users/vishnuchopra/.gradle/caches/transforms-1/files-1.1/exifinterface-25.4.0.aar/9763c6985b23f41fe2d55f647e895fb0/AndroidManifest.xml:23:9-25:38
 	android:value

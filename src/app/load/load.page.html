@@ -1,0 +1,29 @@
+<ion-header>
+  <link href="https://fonts.googleapis.com/css?family=Cairo|Lato|Raleway|Righteous" rel="stylesheet">
+  <ion-toolbar color="base">
+	<ion-buttons slot="start">
+        <ion-button href="/home">
+	      <ion-icon name="arrow-dropleft"></ion-icon>
+	    </ion-button>
+    </ion-buttons>
+  <ion-buttons slot="secondary">
+    <ion-button href="/start">
+      <ion-icon slot="icon-only" name="home"></ion-icon>
+    </ion-button>
+    <ion-button href="/home">
+      <ion-icon slot="icon-only" name="back"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+</ion-toolbar>
+
+</ion-header>
+
+<ion-content padding color="base">
+    <ion-button ion-button color="tertiary" (click)="get_workout('bicep_basics')" block>Bicep Basics</ion-button>
+    <ion-button ion-button color="success" (click)="get_workout('squat_bacics')" block>Squat Basics</ion-button>
+    <ion-button ion-button color="tertiary" (click)="get_workout('full_body_blast')" block>Full Body Blast</ion-button>
+    <ion-button ion-button color="success" (click)="get_workout('arm_attack')" block>Arm Attack</ion-button>
+    <ion-button ion-button color="tertiary" (click)="get_workout('leg_destruction')" block>Leg Destruction</ion-button>
+  
+</ion-content>
+ 

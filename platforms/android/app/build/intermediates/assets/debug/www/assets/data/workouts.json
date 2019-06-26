@@ -1,0 +1,32 @@
+{
+  "bicep_basics": {
+    "curl_sets": 2,
+    "squat_sets": 0,
+    "reps_per_set": 5,
+    "rest_time": 10
+  },
+  "squat_bacics": {
+    "curl_sets": 0,
+    "squat_sets": 2,
+    "reps_per_set": 5,
+    "rest_time": 10
+  },
+  "full_body_blast": {
+    "curl_sets": 2,
+    "squat_sets": 2,
+    "reps_per_set": 5,
+    "rest_time": 10
+  },
+  "arm_attack": {
+    "curl_sets": 2,
+    "squat_sets": 0,
+    "reps_per_set": 5,
+    "rest_time": 10
+  },
+  "leg_destruction": {
+    "curl_sets": 0,
+    "squat_sets": 2,
+    "reps_per_set": 5,
+    "rest_time": 10
+  }
+}

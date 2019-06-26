@@ -1,9 +1,15 @@
 <ion-header>
   <link href="https://fonts.googleapis.com/css?family=Cairo|Lato|Raleway|Righteous" rel="stylesheet">
   <ion-toolbar color="base">
+    <ion-buttons slot="start">
+        <ion-button href="/start">
+      <ion-icon name="arrow-dropleft"></ion-icon>
+    </ion-button>
+    </ion-buttons>
+ 
   <ion-buttons slot="secondary">
     <ion-button href="/start">
-      <ion-icon slot="icon-only" name="home" ></ion-icon>
+      <ion-icon slot="icon-only" name="home"></ion-icon>
     </ion-button>
   </ion-buttons>
 </ion-toolbar>
@@ -21,12 +27,7 @@
 
         </div>
 
-        <div class="input_div">
-        <h2>Front Raise Sets</h2>
-        <ion-input  text-right   type="number" id="input" [(ngModel)]="curl_sets"></ion-input>
-        <!-- <h2>Bicep Curl Sets</h2> -->
-
-        </div>
+       
 
         <div class="input_div">
         <h2>Squat Sets</h2>
@@ -54,6 +55,6 @@
     </div>
     <!-- <ion-button (click)=go()>Start Workout</ion-button> -->
     <ion-button ion-button color="light" (click)=go() block>Start Workout <ion-icon name="flame"></ion-icon></ion-button>
-    <ion-button ion-button color="primary" href="/feedback" block>Load Workout <ion-icon name="save"></ion-icon></ion-button>
+    <ion-button ion-button color="primary" href="/load" block>Load Workout <ion-icon name="save"></ion-icon></ion-button>
   </div>
 </ion-content>

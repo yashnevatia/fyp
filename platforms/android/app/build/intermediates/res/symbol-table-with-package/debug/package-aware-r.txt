@@ -1,4 +1,4 @@
-io.ionic.starter
+io.debug.ts
 int drawable screen 0x7f010000
 int id camera_container 0x7f020000
 int id camera_loader 0x7f020001
